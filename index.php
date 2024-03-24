@@ -30,7 +30,7 @@
 		die();
 	}
         function checklogin_mysql($username, $password) {
-		$mysqli = new mysqli('localhost','sohanchidvilasbodapati' /*Database username*/,'sohan' /*Database password*/,'waph' /*Database name*/);
+		$mysqli = new mysqli('localhost','waph_team16' /*Database username*/,'Pa$$w0rd' /*Database password*/,'waph_team' /*Database name*/);
 		if($mysqli->connect_errno){
 		   printf("Database connection failed: %s\n", $mysqli->connect_error);
 		   exit();
