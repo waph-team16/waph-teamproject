@@ -11,8 +11,8 @@
   </script>
 </head>
 <body>
-  <h1>A Simple login form, WAPH</h1>
-  <h2>Sohan Chidvilas Bodapati</h2>
+  <h1>Welcome to Mini Facebook, PleaseLogin</h1>
+  <h2>Team-16</h2>
   <div id="digit-clock"></div>  
 <?php
   //some code here
