@@ -1,13 +1,8 @@
-# README.md Template
-
-*NOTE*: _This is just a tentative template for your team to start working on sprint 0. It is a minimum requirement for your project's final report and can be updated later.
-Your team can revise/add more sections; however, it is highly recommended that you seek approval from the instructor for a pull request._
-
 # WAPH-Web Application Programming and Hacking
 
 ## Instructor: Dr. Phu Phung
 
-# Project Topic/Title : Mini Facebook
+# Project Topic/Title : Mini Facebook - Team 16
 
 # Team members
 
@@ -60,7 +55,9 @@ In the mini Facebook project, a comprehensive security strategy is implemented t
 
 ## Use-Case Realization
 
-In this Sprint-0 we a focusing on groundwork for out team project by configuring HTTPS , database and github repositories. As part of Login system migration from lab3 and lab4 to Mini project. We deployed our login application related files like form.php , index.php , logout.php into our new setup  and tested it
+In this Sprint-0 we a focusing on groundwork for out team project by configuring HTTPS , database and github repositories. As part of Login system migration from lab3 and lab4 to Mini project. We deployed our login application related files like form.php , index.php , logout.php into our new setup  and tested it.
+
+The Screenshots for the testing of login system is given in demo section.
 
 
 ## Database 
@@ -137,13 +134,11 @@ Each member of the team successfully configured the setup in their local machine
 
 # Security analysis
 
-_Include a brief explanation of your implementation and the security aspects based on the following questions:_
+As part of our previous Lab's like lab-3 and lab-4 , We implemented many security measures to make our Web application more secure and robust.
 
-*  How did you apply the security programming principles in your project?
-*  What database security principles have you used in your project?
-*  Is your code robust and defensive? How?
-*  How did you defend your code against known attacks such as XSS, SQL Injection, CSRF, Session Hijacking
-*   How do you separate the roles of super users and regular users?
+I created an SSL certificate, set up HTTPS on my web server, and used HTTPS to see a PHP website. The SSL certificate details are displayed in the screenshots, enabling secure connection between the client and the server. By encrypting the data transferred between the user's browser and the web server, this ensures data protection. When HTTPS is successfully configured, the web application's security will be good.
+
+By setting the HttpOnly and Secure settings for session cookies, I was able to protect sessions from session-hijacking attacks as in the screenshots. These flags were added to the PHP code to make sure that the session cookie can only be read via HTTP and is transferred safely over HTTPSonly. The browser's developer tools confirm that the HttpOnly and Secure flags are correctly set, improving web application security and decreasing the chance of session hijacking
 
 # Demo (screenshots)
 
@@ -170,7 +165,7 @@ Result: Establishment of essential project foundations and streamlined developme
 
 ### Sprint 0
 
-Duration: DD/MM/YYYY-DD/MM/YYYY
+Duration: 03/20/2024-03/24/2024
 
 #### Completed Tasks: 
 
