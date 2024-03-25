@@ -71,7 +71,7 @@ Database-accoutn.sql file is responsible for Database and user creation in MYSQL
 
 Entity diagram :
 
-![Database entity diagram](images/dbentity.jpg)
+![Database entity diagram](images/dbentity.png)
 
 Source code : database-account.sql
 
@@ -127,13 +127,13 @@ GRANT ALL ON receives TO 'waph_team16'@'localhost';
 
 Each member of the team successfully configured the setup in their local machine and tested it successfully. Also provided the testing screenshots below
 
-![SSL certificate created for the team project](images/sslcert.jpg)
+![SSL certificate created for the team project](images/sslcert.png)
 
-![Maheedhar HTTPS configuration test](images/atmakumatest.jpg)
+![Maheedhar HTTPS configuration test](images/atmakumatest.png)
 
-![Sohan Bodapati HTTPS configuration test](images/sohantest.jpg)
+![Sohan Bodapati HTTPS configuration test](images/sohantest.png)
 
-![Bhanu Suraj HTTPS configuration test](images/sohantest.jpg)
+![Bhanu Suraj HTTPS configuration test](images/sohantest.png)
 
 # Security analysis
 
@@ -149,11 +149,11 @@ _Include a brief explanation of your implementation and the security aspects bas
 
 In this Sprint-0 we successfully tested the login page of our mini facebook application 
 
-![User Login Page](images/loginform.jpg)
+![User Login Page](images/loginform.png)
 
-![Admin User Sucessfull login](images/loginsuccess.jpg)
+![Admin User Sucessfull login](images/loginsuccess.png)
 
-![Invalid user Login Failed](images/invaliduserattempt.jpg)
+![Invalid user Login Failed](images/invaliduserattempt.png)
 
 # Software Process Management
 
