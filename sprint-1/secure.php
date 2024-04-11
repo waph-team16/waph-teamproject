@@ -38,5 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Add your form processing logic here...
 }
 ?>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protected Form</title>
+</head>
+<body>
+    <h1>Protected Form</h1>
+    <form action="process_form.php" method="POST">
+        <!-- Include CSRF token as a hidden input field -->
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+        <!-- Add your form fields here -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
 
 
