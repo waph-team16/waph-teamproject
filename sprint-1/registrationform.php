@@ -62,7 +62,7 @@
   <script type="text/javascript">
     function displayTime() {
       document.getElementById('digit-clock').innerHTML = "Current time:" + new Date();
-      echo "Visited time: " . date("Y-m-d h:i:as")
+      
     }
     setInterval(displayTime,500);
   </script>
@@ -70,7 +70,12 @@
 <body>
   <h1>New user registration, for Individual Project</h1>
   <div class="centered">
-  <div id="digit-clock"></div>  
+    <div id="digit-clock"></div>
+    <?php
+      //some code here
+      echo "Visited time: " . date("Y-m-d h:i:sa")
+    ?>
+  </div> 
 
   <form action="addnewuser.php" method="POST" class="form login">
     Username:<input type="text" class="text_field" name="username" /> <br>
