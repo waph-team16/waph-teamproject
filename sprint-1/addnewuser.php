@@ -24,10 +24,10 @@
 
         if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
                 echo "Registration succeeded!";
-                echo "<a href='form2.php' class='home-link'>Login Page</a>";
+            echo "<a href='form2.php' class='home-link'>Login Page</a>";
             } else {
                 echo "Failed to add user profile!";
-                echo "<a href='form2.php' class='home-link'>Login Page</a>";
+            echo "<a href='form2.php' class='home-link'>Login Page</a>";
             }
 
     } else {
@@ -87,6 +87,7 @@
         
         if (!$stmt->execute()) {
             printf("Execute failed: %s\n", $stmt->error);
+            echo "<script>alert('User with the same username or email already exists');</script>";
             return false;
         }
         
