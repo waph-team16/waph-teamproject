@@ -51,6 +51,16 @@
     .button:hover {
       background-color: #218838; /* Darker green on hover */
     }
+            .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
   </style>
 </head>
 <body>
