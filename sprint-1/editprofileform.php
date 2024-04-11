@@ -16,18 +16,19 @@
       color: #333; /* Dark gray text color */
     }
     h1, h2 {
-      color: #007bff; /* Blue heading color */
+      color: #ff4500; /* Orange heading color */
       text-align: center;
     }
     #digit-clock {
       text-align: center;
       margin-bottom: 20px;
+      color: #00bfff; /* Sky blue text color */
     }
     .form {
       max-width: 300px; /* Adjust form width as needed */
       margin: 0 auto;
       padding: 20px;
-      background: #fff; /* White background */
+      background: #ffffe0; /* Light yellow background */
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
     }
@@ -35,21 +36,21 @@
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
-      border: 1px solid #ccc; /* Light gray border */
+      border: 1px solid #ff6347; /* Tomato border color */
       border-radius: 5px;
       box-sizing: border-box;
     }
     .button {
       width: 100%;
       padding: 10px;
-      background-color: #28a745; /* Green button background */
+      background-color: #4caf50; /* Green button background */
       color: #fff; /* White button text color */
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
     .button:hover {
-      background-color: #218838; /* Darker green on hover */
+      background-color: #45a049; /* Darker green on hover */
     }
   </style>
 </head>
