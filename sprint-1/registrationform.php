@@ -48,6 +48,16 @@
     .button:hover {
       background-color: #0056b3;
     }
+     .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
   </style>
   <script type="text/javascript">
     function displayTime() {
