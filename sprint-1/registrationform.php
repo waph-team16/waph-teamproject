@@ -78,13 +78,13 @@
 </head>
 <body>
   <h1>New user registration, for Individual Project</h1>
-  <form name="registrationForm" action="addnewuser.php" method="POST" class="form login" onsubmit="return validateForm()">
+  <form action="addnewuser.php" method="POST" class="form login">
     Username:<input type="text" class="text_field" name="username" /> <br>
     Password: <input type="password" class="text_field" name="password" /> <br>
-    Name:<input type="text" class="text_field" name="name" /> <br>
-    Additional Email: <input type="text" class="text_field" name="additional_email" /> <br>
-    Email:<input type="text" class="text_field" name="email" /> <br>
-    Phone: <input type="text" class="text_field" name="phone" /> <br>
+    name:<input type="text" class="text_field" name="name" /> <br>
+    additional_email: <input type="text" class="text_field" name="additional_email" /> <br>
+    email:<input type="text" class="text_field" name="email" /> <br>
+    phone: <input type="text" class="text_field" name="phone" /> <br>
     <button class="button" type="submit">Submit</button>
   </form>
   <a href="form2.php" class="home-link">Login Page</a>
