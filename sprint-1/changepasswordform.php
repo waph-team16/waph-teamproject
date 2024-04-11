@@ -64,5 +64,6 @@
     Password: <input type="password" class="text_field" name="password" /> <br>
     <button class="button" type="submit">Submit</button>
   </form>
+  <a href="index.php" class="home-link">Home Page</a>
 </body>
 </html>
