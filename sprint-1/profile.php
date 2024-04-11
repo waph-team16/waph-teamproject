@@ -41,6 +41,9 @@ $mysqli->close();
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
         .profile-container {
             max-width: 400px;
@@ -48,15 +51,32 @@ $mysqli->close();
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .profile-container h2 {
             margin-top: 0;
+            color: #007bff; /* Blue heading color */
+            text-align: center;
         }
         .profile-info {
             margin-bottom: 10px;
         }
         .profile-info label {
             font-weight: bold;
+        }
+        .profile-info span {
+            color: #555; /* Dark gray text color */
+        }
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -79,8 +99,8 @@ $mysqli->close();
             <label>Phone:</label>
             <span><?php echo $phone; ?></span>
         </div>
-
     </div>
-    <a href="index.php">Home Page</a>
+    <a href="index.php" class="home-link">Home Page</a>
 </body>
 </html>
+
