@@ -14,7 +14,7 @@ function isTokenValid($token) {
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
     // Redirect the user to the login page or perform any other action
-    header("Location: login.php");
+    header("Location: form2.php");
     exit;
 }
 
@@ -27,8 +27,11 @@ if (!isset($_SESSION['csrf_token'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate CSRF token
     if (!isTokenValid($_POST['csrf_token'])) {
-        // CSRF token is invalid, handle the error (e.g., log it, display an error message)
-        die("CSRF Attack detected!");
+        // CSRF token is invalid, display an alert
+        echo "<script>alert('CSRF Attack detected!');</script>";
+        // Redirect or perform any other action as needed
+        header("Location: index.php");
+        exit;
     }
 
     // CSRF token is valid, process the form submission
@@ -36,19 +39,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Protected Form</title>
-</head>
-<body>
-    <h1>Protected Form</h1>
-    <form action="process_form.php" method="POST">
-        <!-- Include CSRF token as a hidden input field -->
-        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-        <!-- Add your form fields here -->
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+
