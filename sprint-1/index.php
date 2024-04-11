@@ -13,7 +13,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
 			$_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];	
 		}else{
 			session_destroy();
-			echo "<script>alert('Invalid username/password');window.location='form.php';</script>";
+			echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
 			die();
 		}
 	}
