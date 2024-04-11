@@ -69,13 +69,22 @@
 </head>
 <body>
   <h1>New user registration, for Individual Project</h1>
-  <div class="centered">
-    <div id="digit-clock"></div>
-    <?php
-      //some code here
-      echo "Visited time: " . date("Y-m-d h:i:sa")
-    ?>
-  </div> 
+<div class="centered">
+  <div id="digit-clock"></div>
+  <?php
+    // Get the visited time
+    $visitedTime = date("Y-m-d h:i:sa");
+    // Output the visited time
+    echo "Visited time: " . $visitedTime;
+  ?>
+</div>
+
+<script>
+  // Get the visited time from PHP and display it in an alert using JavaScript
+  var visitedTime = "<?php echo $visitedTime; ?>";
+  alert("Visited time: " + visitedTime);
+</script>
+
 
   <form action="addnewuser.php" method="POST" class="form login">
     Username:<input type="text" class="text_field" name="username" /> <br>
