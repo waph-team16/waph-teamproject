@@ -63,8 +63,8 @@
   
   <?php
     //some code here
-    echo "Visited time: " . date("Y-m-d h:i:sa")
-  ?>
+    echo "Visited time: " . date("Y-m-d h:i:as")
+  ?> </div>
   <form action="addnewuser.php" method="POST" class="form login">
     Username:<input type="text" class="text_field" name="username" /> <br>
     Password: <input type="password" class="text_field" name="password" /> <br>
