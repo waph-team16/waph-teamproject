@@ -2,12 +2,12 @@
 session_start();
 
 // Function to generate a random token
-function generateToken() {
+function generateCSRFToken() {
     return bin2hex(random_bytes(32)); // Generate a 32-byte token
 }
 
-// Function to check if the CSRF token is valid
-function isTokenValid($token) {
+// Function to validate CSRF token
+function validateCSRFToken($token) {
     return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
 }
 
@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
 
 // Generate CSRF token and store it in the session
 if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = generateToken();
+    $_SESSION['csrf_token'] = generateCSRFToken();
 }
 
 // Check if the user agent has changed (possible session hijacking)
@@ -29,6 +29,18 @@ if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     $_SESSION['alert_message'] = 'Session hijacking attack is detected!';
     header("Location: form2.php");
     exit;
+}
+
+// Check for form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate CSRF token
+    if (!validateCSRFToken($_POST['csrf_token'])) {
+        $_SESSION['alert_message'] = 'CSRF Attack detected!';
+        header("Location: form2.php");
+        exit;
+    }
+
+    // CSRF token is valid, continue processing the form submission
 }
 ?>
 
