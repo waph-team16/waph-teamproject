@@ -23,20 +23,12 @@ if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = generateToken();
 }
 
-// Check for form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate CSRF token
-    if (!isTokenValid($_POST['csrf_token'])) {
-        // CSRF token is invalid, display an alert
-        echo "<script>alert('CSRF Attack detected!');</script>";
-        // Redirect or perform any other action as needed
-        header("Location: index.php");
-        exit;
-    }
-
-    // CSRF token is valid, process the form submission
-    // Add your form processing logic here...
-}
+if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
+		session_destroy();
+		echo "<script>alert('Session hijacking attack is detected!');</script>";
+		header("Refresh:0; url=from2.php");
+		die();
+	}
 ?>
     <!DOCTYPE html>
 <html lang="en">
