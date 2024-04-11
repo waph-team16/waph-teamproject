@@ -24,6 +24,7 @@
 
         if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
                 echo "Registration succeeded!";
+            <a href="form2.php" class="home-link">Login Page</a>
             } else {
                 echo "Failed to add user profile!";
             }
