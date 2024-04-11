@@ -13,7 +13,7 @@ function isTokenValid($token) {
 
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
-    // Redirect the user to the login page or perform any other action
+    echo "<script>alert('Session hijacking attack is detected!');</script>";
     header("Location: form2.php");
     exit;
 }
@@ -30,21 +30,5 @@ if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
 		die();
 	}
 ?>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Protected Form</title>
-</head>
-<body>
-    <h1>Protected Form</h1>
-    <form action="process_form.php" method="POST">
-        <!-- Include CSRF token as a hidden input field -->
-        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-        <!-- Add your form fields here -->
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
 
 
