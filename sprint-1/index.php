@@ -78,7 +78,7 @@ function getPosts()
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MiniFacebook Homepage</title>
+    <title>Individual Project 2</title>
     <link rel="stylesheet" href="minifbstyle.css">
     <style>
         /* Interactive styles */
