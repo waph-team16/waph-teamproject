@@ -58,7 +58,9 @@
 </head>
 <body>
   <h1>New user registration, for Individual Project</h1>
+  <div class="centered">
   <div id="digit-clock"></div>  
+  
   <?php
     //some code here
     echo "Visited time: " . date("Y-m-d h:i:sa")
