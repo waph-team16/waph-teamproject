@@ -1,128 +1,59 @@
 <?php
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $name = $_POST["name"];
-    $additional_email = $_POST["additional_email"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    
-    if (isset($username) && isset($password) && isset($name) && isset($additional_email) && isset($phone)) 
-    {
-        // Add user and fetch auto-generated user_id
-        $user_id = addNewUser($username, $password);
-        
-        // if ($user_id !== false) {
-        //     // Add user details to profiles table
-        //     if (addUserProfile($user_id, $name, $additional_email, $phone)) {
-        //         echo "Registration succeeded!";
-        //     } else {
-        //         echo "Failed to add user profile!";
-        //     }
-        // } else {
-        //     echo "Registration failed!";
-        // }
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+	if (isset($username) and isset($password)){
+		//echo "Debug> changepassword.php got username=$username;password=$password";
+		if(changepassword($username,$password))
+	{
+		echo " Your password has been changed!";
+	}
+	else
+	{
+		echo "Registration failed!";
+	}
+	}else {
+		echo "No username/password provided!";
+	}
+	
+	function changepassword($username, $password)
+{
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        return FALSE;
+    }
 
-        if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
-                echo "Registration succeeded!";
-            echo "<a href='form2.php' class='home-link'>Login Page</a>";
-            } else {
-                echo "Failed to add user profile!";
-            echo "<a href='form2.php' class='home-link'>Login Page</a>";
-            }
+    // Hash the password before updating
+    $hashed_password = md5($password);
 
-    } else {
-        echo "Incomplete data provided!";
-    }
-    
-    function addNewUser($username, $password) {
-        $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
-        
-        if ($mysqli->connect_errno) {
-            printf("Database connection failed: %s\n", $mysqli->connect_error);
-            return false;
-        }
-        
-        $prepared_sql = "INSERT INTO users (username, password) VALUES (?, MD5(?))";
-        $stmt = $mysqli->prepare($prepared_sql);
-        
-        if (!$stmt) {
-            printf("Prepare failed: %s\n", $mysqli->error);
-            return false;
-        }
-        
-        $stmt->bind_param("ss", $username, $password);
-        
-        if (!$stmt->execute()) {
-            printf("Execute failed: %s\n", $stmt->error);
-            return false;
-        }
-        
-        // Fetch auto-generated user_id
-        //$user_id = $stmt->insert_id;
-        $result = $mysqli->query("SELECT LAST_INSERT_ID() AS user_id");
-    $row = $result->fetch_assoc();
-    $user_id = $row['user_id'];
-    
-    $stmt->close();
-    return $user_id;
-    }
-    
-    function addUserProfile($user_id, $name, $additional_email, $phone, $email) {
-        $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
-        
-        if ($mysqli->connect_errno) {
-            printf("Database connection failed: %s\n", $mysqli->connect_error);
-            return false;
-        }
-        
-        $prepared_sql = "INSERT INTO profiles (user_id, name, additional_email, phone, email) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $mysqli->prepare($prepared_sql);
-        
-        if (!$stmt) {
-            printf("Prepare failed: %s\n", $mysqli->error);
-            return false;
-        }
-        
-        $stmt->bind_param("issss", $user_id, $name, $additional_email, $phone, $email);
-        
-        if (!$stmt->execute()) {
-            printf("Execute failed: %s\n", $stmt->error);
-            echo "<script>alert('User with the same username or email already exists');</script>";
-            return false;
-        }
-        
-        $stmt->close();
-        return true;
-    }
-?> 
+    $prepared_sql = "UPDATE users SET password = ? WHERE username = ?;";
+    $stmt = $mysqli->prepare($prepared_sql);
+    // Binding parameters
+    $stmt->bind_param("ss", $hashed_password, $username);
+    $stmt->execute();
+    // Checking if the execution was successful
+    if ($mysqli->affected_rows == 1)
+        return TRUE;
+    return FALSE;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Exists</title>
+    <meta charset="utf-8">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="minifbstyle.css">
 </head>
 <body>
-<script>
-// Function to display a popup alert
-function showAlert(message) {
-    alert(message);
-}
+<div class="container">
+    <header>
+            <a href="index.php">Home Page</a>
+            <a href="logout.php">Logout</a>
+            <a href="changepasswordform.php">back</a>
 
-// Check if the PHP variable contains a message about existing user
-<?php
-// Assume $message is set in PHP code with the appropriate message
-$message = "User with the same username or email already exists";
-
-// Check if the message is set and not empty
-if (isset($message) && !empty($message)) {
-    // Escape special characters in the message to prevent JavaScript injection
-    $escaped_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-    // Call the showAlert function with the escaped message
-    echo "showAlert('$escaped_message');";
-}
-?>
-</script>
+        </div>
+    </header>
+</div>
 </body>
 </html>
-
