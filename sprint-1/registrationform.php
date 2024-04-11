@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Sign Up</title>
-  <style>
+    <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
@@ -59,34 +59,26 @@
             text-decoration: underline;
         }
   </style>
-  <script type="text/javascript">
-    function displayTime() {
-      document.getElementById('digit-clock').innerHTML = "Current time:" + new Date();
+  <script>
+    function validateForm() {
+      // Client-side validation logic
+      var username = document.forms["registrationForm"]["username"].value;
+      var password = document.forms["registrationForm"]["password"].value;
+      var email = document.forms["registrationForm"]["email"].value;
+      // Add more validation checks as needed
       
+      if (username == "" || password == "" || email == "") {
+        alert("All fields are required");
+        return false;
+      }
+      // Add more client-side validation checks as needed
+      return true;
     }
-    setInterval(displayTime,500);
   </script>
 </head>
 <body>
   <h1>New user registration, for Individual Project</h1>
-<div class="centered">
-  <div id="digit-clock"></div>
-    <?php
-    // Get the visited time
-    $visitedTime = date("Y-m-d h:i:sa");
-    // Output the visited time
- 
-  ?>
-
-
-<script>
-  // Get the visited time from PHP and display it in an alert using JavaScript
-  var visitedTime = "<?php echo $visitedTime; ?>";
-  alert("Visited time: " + visitedTime);
-</script>
-
-
-  <form action="addnewuser.php" method="POST" class="form login">
+  <form name="registrationForm" action="addnewuser.php" method="POST" class="form login" onsubmit="return validateForm()">
     Username:<input type="text" class="text_field" name="username" /> <br>
     Password: <input type="password" class="text_field" name="password" /> <br>
     Name:<input type="text" class="text_field" name="name" /> <br>
