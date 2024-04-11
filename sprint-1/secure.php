@@ -13,6 +13,7 @@ function validateCSRFToken($token) {
 
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
+    echo "<script>alert('You have not login. Please login first!');</script>";
     $_SESSION['alert_message'] = 'Session hijacking attack is detected!';
     header("Location: form2.php");
     exit;
@@ -26,6 +27,7 @@ if (!isset($_SESSION['csrf_token'])) {
 // Check if the user agent has changed (possible session hijacking)
 if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     session_destroy();
+    echo "<script>alert('You have not login. Please login first!');</script>";
     $_SESSION['alert_message'] = 'Session hijacking attack is detected!';
     header("Location: form2.php");
     exit;
