@@ -13,7 +13,7 @@ function isTokenValid($token) {
 
 // Check if the user is logged in
 if (!isset($_SESSION['user'])) {
-    echo "<script>alert('Session hijacking attack is detected!');</script>";
+    $_SESSION['alert_message'] = 'Session hijacking attack is detected!';
     header("Location: form2.php");
     exit;
 }
@@ -26,11 +26,12 @@ if (!isset($_SESSION['csrf_token'])) {
 // Check if the user agent has changed (possible session hijacking)
 if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     session_destroy();
-    echo "<script>alert('Session hijacking attack is detected!');</script>";
-    header("Refresh:0; url=form2.php"); // Redirect after alert
+    $_SESSION['alert_message'] = 'Session hijacking attack is detected!';
+    header("Location: form2.php");
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,5 +41,15 @@ if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
 </head>
 <body>
     <!-- Your HTML content goes here -->
+
+    <script>
+        // Check if there's an alert message stored in the session
+        <?php if(isset($_SESSION['alert_message'])): ?>
+            // Display the alert message
+            alert('<?php echo $_SESSION['alert_message']; ?>');
+            // Remove the alert message from the session
+            <?php unset($_SESSION['alert_message']); ?>
+        <?php endif; ?>
+    </script>
 </body>
 </html>
