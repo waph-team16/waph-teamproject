@@ -74,5 +74,6 @@
     Phone: <input type="text" class="text_field" name="phone" /> <br>
     <button class="button" type="submit">Submit</button>
   </form>
+  <a href="form2.php" class="home-link">Home Page</a>
 </body>
 </html>
