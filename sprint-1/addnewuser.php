@@ -1,3 +1,15 @@
+<style>
+    .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+</style>
 <?php
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -27,6 +39,7 @@
             <a href="form2.php" class="home-link">Login Page</a>
             } else {
                 echo "Failed to add user profile!";
+            <a href="form2.php" class="home-link">Login Page</a>
             }
 
     } else {
