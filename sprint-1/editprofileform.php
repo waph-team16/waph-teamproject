@@ -52,6 +52,16 @@
     .button:hover {
       background-color: #45a049; /* Darker green on hover */
     }
+            .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
   </style>
 </head>
 <body>
@@ -70,5 +80,6 @@
     <!-- Add more fields as needed -->
     <button class="button" type="submit">Save Changes</button>
   </form>
+  <a href="index.php" class="home-link">Home Page</a>
 </body>
 </html>
