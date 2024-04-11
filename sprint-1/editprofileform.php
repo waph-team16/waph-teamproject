@@ -9,6 +9,49 @@
       }
       setInterval(displayTime,500);
   </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9; /* Light gray background */
+      color: #333; /* Dark gray text color */
+    }
+    h1, h2 {
+      color: #007bff; /* Blue heading color */
+      text-align: center;
+    }
+    #digit-clock {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form {
+      max-width: 300px; /* Adjust form width as needed */
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff; /* White background */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+    .text_field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc; /* Light gray border */
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745; /* Green button background */
+      color: #fff; /* White button text color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  </style>
 </head>
 <body>
   <?php
