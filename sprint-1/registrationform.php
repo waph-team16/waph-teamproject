@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WAPH-Login page</title>
+  <title>Sign Up</title>
   <script type="text/javascript">
       function displayTime() {
         document.getElementById('digit-clock').innerHTML = "Current time:" + new Date();
@@ -11,9 +11,8 @@
   </script>
 </head>
 <body>
-  <h1>New user registration, WAPH</h1>
-  <h2>Maheedhar Atmakuru</h2>
-  <div id="digit-clock"></div>  
+  <h1>New user registration, Minifacebook</h1>
+    <div id="digit-clock"></div>  
 <?php
   //some code here
   echo "Visited time: " . date("Y-m-d h:i:sa")

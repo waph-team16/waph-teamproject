@@ -9,6 +9,7 @@
       }
       setInterval(displayTime,500);
   </script>
+  <link rel="stylesheet" href="minifbstyle.css">
 </head>
 <body>
   <h1>Welcome to Mini Facebook, PleaseLogin</h1>
@@ -18,7 +19,7 @@
   //some code here
   echo "Visited time: " . date("Y-m-d h:i:sa")
 ?>
-  <form action="index2.php" method="POST" class="form login">
+  <form action="index.php" method="POST" class="form login">
     Username:<input type="text" class="text_field" name="username" /> <br>
     Password: <input type="password" class="text_field" name="password" /> <br>
     <button class="button" type="submit">Login</button>

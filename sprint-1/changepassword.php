@@ -5,7 +5,7 @@
 		//echo "Debug> changepassword.php got username=$username;password=$password";
 		if(changepassword($username,$password))
 	{
-		echo "Registration succeeded!";
+		echo " Your password has been changed!";
 	}
 	else
 	{
@@ -37,3 +37,23 @@
     return FALSE;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="minifbstyle.css">
+</head>
+<body>
+<div class="container">
+    <header>
+            <a href="index.php">Home Page</a>
+            <a href="logout.php">Logout</a>
+            <a href="changepasswordform.php">back</a>
+
+        </div>
+    </header>
+</div>
+</body>
+</html>
