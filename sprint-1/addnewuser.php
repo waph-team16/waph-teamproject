@@ -95,3 +95,34 @@
         return true;
     }
 ?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Exists</title>
+</head>
+<body>
+<script>
+// Function to display a popup alert
+function showAlert(message) {
+    alert(message);
+}
+
+// Check if the PHP variable contains a message about existing user
+<?php
+// Assume $message is set in PHP code with the appropriate message
+$message = "User with the same username or email already exists";
+
+// Check if the message is set and not empty
+if (isset($message) && !empty($message)) {
+    // Escape special characters in the message to prevent JavaScript injection
+    $escaped_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    // Call the showAlert function with the escaped message
+    echo "showAlert('$escaped_message');";
+}
+?>
+</script>
+</body>
+</html>
+
