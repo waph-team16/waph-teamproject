@@ -186,7 +186,7 @@ email validation from the database.
 * To limit cookies to work exclusively within the website hosting the web application you can include the 'SameSite' attribute. SameSite cookies help lower the chance of site request forgery (CSRF), by stopping browsers from sending cookies in requests originating from unrelated websites. Here's an illustration of input:  ```<input type="hidden" name="nocsrftoken" value="<?php echo $rand;"/> ```
 * When developers set cookies with ``` 'SameSite=Strict' or 'SameSite=Lax' ``` it helps protect against security risks, like site request forgery by ensuring that sensitive cookies are not included in vulnerable requests. Additionally using custom headers can further enhance the security measures in place.
 * 
-![ Enabling the CSRF Protection](13.png)
+![ Enabling the CSRF Protection](15.png)
 
 
 ### Video link: 
