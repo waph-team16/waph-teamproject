@@ -120,15 +120,19 @@
         
         if ($user_id !== false) {
             if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
-                echo "Registration succeeded!" <a href="form2.php">Log In Form</a>;
+                echo "Registration succeeded!";
+                echo "<a href="form2.php">Log In Form</a>";
             } else {
-                echo "Failed to add user profile!" <a href="registrationform.php">Registration Form</a>;
+                echo "Failed to add user profile!";
+                echo "<a href="registrationform.php">Registration Form</a>";
             }
         } else {
-            echo "Registration failed!"<a href="registrationform.php">Registration Form</a>;
+            echo "Registration failed!";
+            echo "<a href="registrationform.php">Registration Form</a>";
         }
     } else {
-        echo "Incomplete data provided!" <a href="registrationform.php">Registration Form</a>;
+        echo "Incomplete data provided!";
+        echo "<a href="registrationform.php">Registration Form</a>";
     }
     
     function addNewUser($username, $password) {
