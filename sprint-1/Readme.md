@@ -168,9 +168,9 @@ I have designed the database's structure in a way to be aceesble with the passke
 
 * Most of the front end codes like HTML, CSS and JavaScript are included inside the PHP files for storage optimization. Creating an engaging user experience involves utilizing HTML, CSS and JavaScript to develop an adaptable user interface. HTML establishes the structure of the interface defining components such, as buttons, forms and navigation menus. CSS is then used to style these elements ensuring consistency in appearance and layout across screen sizes and devices. Employing a CSS framework or template can streamline the design process. Enhance the appeal of the interface. JavaScript plays a role in enhancing user interaction by enabling functionalities like interactive menus form validation and real time content updates without necessitating page refreshes. Implementing client side validations, with HTML5 and JavaScript boosts usability by offering feedback on input errors thereby improving the user experience while reducing potential issues.
 
-![ HTML and CSS registration page with input validation](21.png)
+![ HTML and CSS registration page with input validation](22.png)
 
-![ HTML and CSS edit profile page with input validation](22.png)
+![ HTML and CSS edit profile page with input validation](21.png)
 
 ![ Code](12.png)
 
