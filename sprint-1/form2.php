@@ -62,7 +62,7 @@
     <form action="index.php" method="POST" class="form login">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Email address or phone number">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
