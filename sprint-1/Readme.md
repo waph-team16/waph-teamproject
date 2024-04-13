@@ -188,7 +188,7 @@ I have designed the database's structure in a way to be aceesble with the passke
 * I have used the CSRF tokens  to protect the application from Cross Site Request Forgery (CSRF) attacks. These tokens are unique to each user session. Are added to forms or requests. They are verified when submitted to ensure the request is valid. By requiring this token in database altering requests the application can effectively block CSRF attacks. Prevent actors from copying the token. Implementing strategies like SameSite cookie attributes and verifying the source of requests can further enhance the applications defenses against CSRF vulnerabilities.
 * To limit cookies to work exclusively within the website hosting the web application you can include the 'SameSite' attribute. SameSite cookies help lower the chance of site request forgery (CSRF), by stopping browsers from sending cookies in requests originating from unrelated websites. Here's an illustration of input:  ```<input type="hidden" name="nocsrftoken" value="<?php echo $rand;"/> ```
 * When developers set cookies with ``` 'SameSite=Strict' or 'SameSite=Lax' ``` it helps protect against security risks, like site request forgery by ensuring that sensitive cookies are not included in vulnerable requests. Additionally using custom headers can further enhance the security measures in place.
-* 
+  
 ![ Enabling the CSRF Protection](15.png)
 
 
