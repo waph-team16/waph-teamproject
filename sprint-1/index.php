@@ -26,7 +26,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
         if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
 		session_destroy();
 		echo "<script>alert('Session hijacking attack is detected!');</script>";
-		header("Refresh:0; url=from2.php");
+		header("Refresh:0; url=form2.php");
 		die();
 	}
 
