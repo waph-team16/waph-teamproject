@@ -23,7 +23,7 @@
         document.body.appendChild(form);
         // just for the lab report to capture the screenshot, otherwise, the CSRF
         // will be submitted automatically
-        alert('CSRF attack for hackathon 4 is about to happen - By Sohan Chidvilas Bodapati');
+        alert('CSRF attack for individual project 2 is about to happen we are redirecting to login page to secure - By Sohan Chidvilas Bodapati');
         // Submit the form
         form.submit();
     }
