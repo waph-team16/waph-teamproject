@@ -73,7 +73,7 @@ Upon submission of the edit profile form provide users with feedback indicating 
 Finally I have Designed an user friendly interface for managing profiles to allow users to easily navigate and update their details.
 
 ```
-code: $username = $_POST["username"];
+* code: $username = $_POST["username"];
 $name = $_POST["name"];
 $additional_email = $_POST["additional_email"];
 $phone = $_POST["phone"];
@@ -97,7 +97,7 @@ Session Management To avoid any issues with session expiration make sure to upda
 Security Measures; I have Implemented security measures such as rate limitation to prevent brute force attacks on the functionality for changing passwords.I also have a provision of Logging
 
 ```
-code:$stmt->bind_param("ss", $hashed_password, $username);
+* code:$stmt->bind_param("ss", $hashed_password, $username);
     $stmt->execute();
 ```
 
@@ -114,7 +114,7 @@ Utilize Prepared Statements; To prevent SQL injection attacks ensure that all da
 Make sure to validate all user inputs, on the server side to ensure they meet the required lengths and formats. This helps in preventing threats, such as SQL injection and XSS (Cross Site Scripting).
 * The function ```encodeURIComponent()``` is utilized to verify if the input length's zero. It also displays a message, for an user input. Moreover encodeURIComponent encodes the input data. Manages characters to prevent injection attacks. In the case of the guessAge function it validates whether the name is provided or empty prior, to initiating the API call. Using ```SSL``` keys ```HTTPSOnly = True``` which enables HTTPS server.
 ```
-code: $hashed_password = md5($password);
+* code: $hashed_password = md5($password);
 ```
 ![ Password hashing](6.png)
 
@@ -147,15 +147,18 @@ code: $result = $stmt->get_result();
 
 ### Database:
 
-I have designed the database's structure in a way to be aceesble with the passkey I have created ```Pa$$w0rd```. MySQL database have been configured to store user data while minimizing the risk of unauthorized access or data breaches. Describing the data model of the application correctly involves creating the tables, fields and connections. Interactions, with the database should adhere to secure practices, such as employing prepared statements and parameterized queries to prevent SQL injection attacks. Additionally sensitive information, like passwords should undergo hashing before being stored in the database.
+I have designed the database's structure in a way to be aceesble with the passkey I have created ```Pa$$w0rd```. MySQL database have been configured to store user data while minimizing the risk of unauthorized access or data breaches. Describing the data model of the application correctly involves creating the tables, fields and connections. Interactions, with the database should adhere to secure practices, such as employing prepared statements and parameterized queries to prevent SQL injection attacks. Additionally sensitive information, like passwords should undergo hashing before being stored in the database. I have used the command to run the SQL quires ```waph_team < database-data.sql ``` and have created tables to keep the database updated.
 ```
-code: $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+* code: $mysqli = new mysqli('localhost', 'waph_team16',
+'Pa$$w0rd', 'waph_team');
+
 ```
 ```
-email validation from the database.
+* email validation from the database.
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format!";
-        echo '<a href="registrationform.php">registration form</a>';
+        echo '<a href="registrationform.php">
+        registration form</a>';
         exit;
     }
 ```
