@@ -210,7 +210,6 @@
     $stmt->close();
     return $exists;
 }
-<a href="registrationform.php">Registration Form</a>
-<a href="form2.php">LogIn Form</a>
+
 
 ?>
