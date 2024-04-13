@@ -104,12 +104,14 @@
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format!";
+        echo '<a href="registrationform.php">registration form</a>';
         exit;
     }
 
     // Check if username or email is already registered
     if (userExists($username)) {
         echo "User already exists!";
+        echo '<a href="registrationform.php">registration form</a>';
         exit;
     }
     
@@ -121,17 +123,21 @@
         if ($user_id !== false) {
             if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
                 echo "Registration succeeded!";
+                echo '<a href="form2.php">Log In</a>';
                 
             } else {
                 echo "Failed to add user profile!";
+                echo '<a href="registrationform.php">registration form</a>';
                 
             }
         } else {
             echo "Registration failed!";
+            echo '<a href="registrationform.php">registration form</a>';
             
         }
     } else {
         echo "Incomplete data provided!";
+        echo '<a href="registrationform.php">registration form</a>';
       
     }
     
