@@ -42,7 +42,7 @@ function checklogin_mysql($username, $password)
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result->num_rows == 1)
+    if ($result->num_rows >= 1)
         return TRUE;
     return FALSE;
 }
