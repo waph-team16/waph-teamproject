@@ -61,7 +61,7 @@
     </div>
     <form action="index.php" method="POST" class="form login">
       <div class="form-group">
-        <label for="username">Email address or phone number:</label>
+        <label for="username">Username:</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Email address or phone number">
       </div>
       <div class="form-group">
