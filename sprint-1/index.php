@@ -26,7 +26,7 @@ if (isset($_POST["username"]) and isset($_POST["password"])) {
         if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
 		session_destroy();
 		echo "<script>alert('Session hijacking attack is detected!');</script>";
-		header("Refresh:0; url=from.php");
+		header("Refresh:0; url=from2.php");
 		die();
 	}
 
@@ -78,21 +78,42 @@ function getPosts()
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MiniFacebook Homepage</title>
+    <title>Individual Project 2</title>
     <link rel="stylesheet" href="minifbstyle.css">
+    <style>
+        /* Interactive styles */
+        .user-info a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .user-info a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+        .main-content h3 {
+            color: #007bff; /* Blue heading color */
+        }
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .post:hover {
+            background-color: #f9f9f9; /* Light gray background on hover */
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>Minifacebook</h1>
+        <h1>Individual Project 2</h1>
         <div class="user-info">
             <h2>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</h2>
             <a href="logout.php">Logout</a>
             <a href="editprofileform.php">Edit Profile</a>
             <a href="changepasswordform.php">Change Password</a>
             <a href="profile.php">Current Profile</a>
-
-
         </div>
     </header>
     <section class="main-content">
@@ -102,3 +123,4 @@ function getPosts()
 </div>
 </body>
 </html>
+

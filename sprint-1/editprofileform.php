@@ -9,6 +9,60 @@
       }
       setInterval(displayTime,500);
   </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9; /* Light gray background */
+      color: #333; /* Dark gray text color */
+    }
+    h1, h2 {
+      color: #ff4500; /* Orange heading color */
+      text-align: center;
+    }
+    #digit-clock {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00bfff; /* Sky blue text color */
+    }
+    .form {
+      max-width: 300px; /* Adjust form width as needed */
+      margin: 0 auto;
+      padding: 20px;
+      background: #ffffe0; /* Light yellow background */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+    .text_field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ff6347; /* Tomato border color */
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50; /* Green button background */
+      color: #fff; /* White button text color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+            .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+  </style>
 </head>
 <body>
   <?php
@@ -26,5 +80,6 @@
     <!-- Add more fields as needed -->
     <button class="button" type="submit">Save Changes</button>
   </form>
+  <a href="index.php" class="home-link">Home Page</a>
 </body>
 </html>
