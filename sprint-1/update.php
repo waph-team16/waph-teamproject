@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user_id = getUserId($_SESSION['username'], $mysqli);
 
-        $sql = "UPDATE INTO posts (user_id, content, timestamp) VALUES (?, ?, NOW())";
+        $sql = "UPDATE posts SET content = ? WHERE user_id = ? AND timestamp = NOW();";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("is", $user_id, $post_content);
+        $stmt->bind_param("si", $updated_content, $user_id,);
         if ($stmt->execute()) {
             echo "Post added successfully.";
         } else {
