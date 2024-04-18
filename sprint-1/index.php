@@ -69,16 +69,16 @@ function getPosts()
             echo "<p>" . $row['content'] . "</p>";
             echo "<p>Posted by: " . $row['name'] . "</p>";
             echo "<p>Time: " . $row['timestamp'] . "</p>";
-            if ($_SESSION['username'] == $row['name']) {
-                echo "<form method='post' action='edit_post.php'>";
-                echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
-                echo "<input type='submit' value='Edit'>";
-                echo "</form>";
-                echo "<form method='post' action='delete_post.php'>";
-                echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
-                echo "<input type='submit' value='Delete'>";
-                echo "</form>";
-            }
+            
+            echo "<form method='post' action='edit_post.php'>";
+            echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
+            echo "<input type='submit' value='Edit'>";
+            echo "</form>";
+            echo "<form method='post' action='delete_post.php'>";
+            echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
+            echo "<input type='submit' value='Delete'>";
+            echo "</form>";
+           
             echo "<form method='post' action='add_comment.php'>";
             echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
             echo "<input type='text' name='comment_content' placeholder='Add a comment'>";
