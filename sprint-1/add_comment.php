@@ -14,16 +14,17 @@ if ($mysqli->connect_errno) {
 }
 
 // Function to get username by user_id
-function getUsername($user_id, $mysqli)
+function getUserId($username, $mysqli)
 {
-    $sql = "SELECT username FROM users WHERE user_id=?";
+    $sql = "SELECT user_id FROM users WHERE username=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $user_id);
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    return $row['username'];
+    return $row['user_id'];
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['post_id']) && isset($_POST['comment_content'])) {
