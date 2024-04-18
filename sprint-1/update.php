@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sql = "UPDATE posts SET content = ? WHERE post_id = ? AND timestamp = NOW()";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("si", $updated_content, $user_id,);
+        $stmt->bind_param("si", $updated_content, $post_id,);
         if ($stmt->execute()) {
             echo "Post added successfully.";
         } else {
