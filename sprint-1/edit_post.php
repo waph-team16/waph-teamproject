@@ -41,9 +41,12 @@ function getPostContent($post_id)
         exit();
     }
 
-    $sql = "SELECT content FROM posts WHERE post_id=?";
+    // Check if the logged-in user is the author of the post
+    $user_id = getUserId($_SESSION['username'], $mysqli);
+
+    $sql = "SELECT content FROM posts WHERE post_id=? AND user_id=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $post_id);
+    $stmt->bind_param("ii", $post_id, $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -53,5 +56,16 @@ function getPostContent($post_id)
     } else {
         return false;
     }
+}
+
+function getUserId($username, $mysqli)
+{
+    $sql = "SELECT user_id FROM users WHERE username=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['user_id'];
 }
 ?>
