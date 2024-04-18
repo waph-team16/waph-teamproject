@@ -125,6 +125,36 @@ function getPosts()
         .post:hover {
             background-color: #f9f9f9; /* Light gray background on hover */
         }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .action-buttons button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-buttons button.edit {
+            background-color: #ffc107;
+            border: none;
+        }
+
+        .action-buttons button.delete {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .action-buttons button.edit:hover {
+            background-color: #ffca2c;
+        }
+
+        .action-buttons button.delete:hover {
+            background-color: #e0243a;
+        }
     </style>
 </head>
 <body>
