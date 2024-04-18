@@ -23,17 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("is", $user_id, $post_content);
         if ($stmt->execute()) {
             echo "Post added successfully.";
+            echo '<a href="index.php"> Home page </a>';
         } else {
             echo "Error adding post: " . $mysqli->error;
+            echo '<a href="index.php"> Home page </a>';
         }
 
         $stmt->close();
         $mysqli->close();
     } else {
         echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
     }
 } else {
     echo "Invalid request method.";
+    echo '<a href="index.php"> Home page </a>';
 }
 
 function getUserId($username, $mysqli)
