@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
+    echo "You are not logged in.";
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['post_id'])) {
+        $post_id = $_POST['post_id'];
+
+        // Assuming you have a function to delete a post based on post ID
+        if (deletePost($post_id)) {
+            echo "Post deleted successfully.";
+            echo '<a href="index.php"> Home page </a>';
+        } else {
+            echo "Failed to delete post.";
+            echo '<a href="index.php"> Home page </a>';
+        }
+    } else {
+        echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
+    }
+} else {
+    echo "Invalid request method.";
+    echo '<a href="index.php"> Home page </a>';
+}
+
 function deletePost($post_id)
 {
     // Check if the logged-in user is the author of the post
@@ -58,3 +87,15 @@ function isPostAuthor($post_id)
 
     return false; // Post not found
 }
+
+function getUserId($username, $mysqli)
+{
+    $sql = "SELECT user_id FROM users WHERE username=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['user_id'];
+}
+?>
