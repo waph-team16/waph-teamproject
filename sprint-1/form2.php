@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WAPH-Login page</title>
+  <title>WAPHFinalProject-Login page</title>
   <script type="text/javascript">
       function displayTime() {
         document.getElementById('digit-clock').innerHTML = "Current time:" + new Date();
@@ -55,8 +55,8 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>Welcome to My page, Please Login</h1>
-      <h2>Individual Project 2</h2>
+      <h1>Welcome to Mini Facebook, Please Login</h1>
+      <h2>Team-16</h2>
       <div id="digit-clock"></div>
     </div>
     <form action="index.php" method="POST" class="form login">
