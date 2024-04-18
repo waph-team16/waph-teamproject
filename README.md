@@ -20,56 +20,55 @@ Project homepage (public): <https://waph-team16.github.io>
 
 | Date       |   Version     |  Description |
 |------------|:-------------:|-------------:|
-| 24/03/2024 |  0.0          | Init draft   |
+| 24/03/2024 |  0.0          | Sprint-0 Updated|
+| 31/03/2024 |  1.0          | Sprint-1 Updated|
+| 18/03/2024 |  2.0          | Sprint-2 Updated|
 
 
 # Overview
 
-The project entails the development of a mini Facebook application from the ground up, employing a three-tier architecture for robustness and scalability. The frontend interface is constructed using HTML, CSS, and JavaScript to provide an engaging user experience. Meanwhile, PHP serves as the backend language, handling core functionalities such as user authentication, account management, and post operations. The MySQL database underpins the application, storing user data, posts, and chat messages.
-
-Functionality-wise, the application encompasses essential features expected from a social networking platform. Users can register new accounts and securely log in, while superusers possess the authority to disable and enable accounts as needed. Account management extends to post operations, allowing regular users to delete their own posts but not those made by others. Moreover, robust security measures are implemented, including CSRF attack prevention to safeguard against unauthorized post deletions. Access control mechanisms ensure that user privileges are appropriately enforced, with superuser-exclusive functionalities inaccessible to regular users. Additionally, real-time chat functionality fosters seamless communication among logged-in users, enhancing the overall social experience.
-
-In summary, the mini Facebook application is a comprehensive solution designed to provide users with a familiar social networking environment while prioritizing security, usability, and functionality. By leveraging a three-tier architecture and employing a stack comprising HTML, CSS, JavaScript, PHP, and MySQL, the application aims to deliver a seamless and enjoyable social networking experience
+We've set up a database structure, with tables for users, posts and comments in Sprint 2. To ensure data integrity and efficient querying we've defined the relationships between these tables. Users can create posts. Each post can have several comments associated with it. For managing user information we've implemented CRUD operations for each table.
+Logged in users now have the ability to post comments and posts. To simplify these actions we've designed user forms to logged in users. Additionally we've ensured that user sessions persist across pages offering a navigation experience, for logged in users.
+Furthermore individuals who are logged in can. Delete their posts. We have introduced functions that allow users to make changes or delete their posts ensuring that only the original poster has these privileges. By restricting access, to editing and deleting posts and incorporating authentication measures we have enhanced security and privacy on the platform.
+Overall these enhancements have elevated user satisfaction. Provided users, with the means to interact effectively with the platform.
 
 # System Analysis
 
 ### Problem Definition:
-The primary problem the mini Facebook application aims to address is providing users with a platform to connect and interact socially. This involves facilitating user registration and login processes, enabling users to manage their accounts effectively, allowing users to create and delete posts, implementing real-time chat features, and ensuring secure access control to different functionalities based on user roles.
+The primary goal of the Facebook application is to provide a platform for individuals to interact and socialize. This involves simplifying the process of registering and logging in for users empowering them to manage their accounts allowing them to add or posts incorporating real time chat features and ensuring secure access control, for different functionalities based on user roles.
 
 ### System Modeling:
-Various modeling techniques are employed to represent the system's structure, behavior, and interactions. Use case diagrams depict the various user interactions and system functionalities. Entity-relationship diagrams illustrate the relationships between different entities such as users, posts, and messages. Data flow diagrams visualize the flow of data within the system, highlighting key processes and data transformations.
+The systems structure, behavior and interactions are depicted through a range of modeling techniques. Use case diagrams illustrate the functioning of user interactions and system functionalities. Entity relationship diagrams showcase the relationships, between entities such as users, posts and messages. Data flow diagrams highlight operations and data changes while visualizing the flow of data, within the system.
+
 
 ### Security implementation:
-In the mini Facebook project, a comprehensive security strategy is implemented to counter common threats like SQL injection and cross-site scripting (XSS) attacks. This strategy includes rigorous input validation to ensure user inputs adhere to expected formats and ranges, effectively thwarting SQL injection attempts. Parameterized queries are employed to separate data from instructions within SQL queries, bolstering defense against SQL injection. User-generated content undergoes thorough output encoding to neutralize malicious scripts, mitigating XSS vulnerabilities. Secure session management techniques are employed to prevent session hijacking and maintain session integrity. Additionally, user passwords are securely hashed using strong cryptographic algorithms like bcrypt before storage, enhancing overall system security and preventing unauthorized access. These measures collectively form a robust defense mechanism, safeguarding the mini Facebook application and its users from potential security risks.
+A detailed security strategy is implemented in the small scale Facebook project to prevent threats such, as SQL injection and site scripting (XSS) attacks. By enforcing input validation to ensure that user inputs adhere to expected formats and ranges this method effectively blocks SQL injection attempts. To enhance defense against SQL injection parameterized queries are employed to separate data, from commands within SQL queries. For addressing XSS vulnerabilities, user generated content undergoes output encoding to deactivate scripts. Secure session management techniques are utilized to prevent session hijacking and maintain session integrity. Additionally before being stored user passwords are securely hashed using algorithms like bcrypt enhancing system security and thwarting unauthorized access. These measures collectively establish a security framework safeguarding the compact Facebook program and its users.
 
 ## High-level Requirements
 
-1. User registration functionality allowing individuals to create new accounts.
-2. User login functionality for registered users to access their accounts securely.
-3. Account management system enabling superusers to disable and enable user accounts as needed.
-4. Post management features allowing users to delete their own posts while preventing deletion of others' posts.
-5. Implementation of real-time chat functionality facilitating instant communication between logged-in users.
-6. Robust security measures including prevention of SQL injection and cross-site scripting (XSS) attacks.
-7. Detection and prevention of CSRF attacks to safeguard against unauthorized actions initiated by malicious third parties.
-8. Access control mechanisms ensuring that regular users cannot access functionalities reserved for superusers.
+1. Database implementation in a clear way to designate the valid users
+2. The logged-in users will be able to manage their posts and manage them.
+3.Users can manage their posts by deleting their content without the ability to remove posts made by others.
+
 
 ## Use-Case Realization
 
-In this Sprint-0 we a focusing on groundwork for out team project by configuring HTTPS , database and github repositories. As part of Login system migration from lab3 and lab4 to Mini project. We deployed our login application related files like form.php , index.php , logout.php into our new setup  and tested it.
-
-The Screenshots for the testing of login system is given in demo section.
+We concentrated on improving our platform's user interaction features during Sprint 2. This required creating and putting into place a solid database structure with tables for users, posts, and comments. We made sure that these tables had the correct associations, enabling users to have numerous posts and multiple comments connected to them.
+The option for users who are logged in to add new posts and comments was one of the major improvements that was implemented. We designed user-friendly forms that are available to users who are logged in, making it simple for them to add material to the site. In order to provide users with a smooth platform navigation experience, we also integrated session management to save user sessions across several pages.
+Additionally, we enabled people to take control of their own content by adding editing capabilities.In addition, to deleting posts enhancing security measures and granting users autonomy over their data are now exclusively accessible, to the post creator. By implementing authentication checks we ensure that users can modify or delete their posts. Overall these updates have significantly improved user engagement by empowering them to engage with the platform through creation and management while safeguarding the integrity and security of data.
 
 
 ## Database 
 
-As a part of database design for our Mini facebook project we utilized the entity diagram given in lecture-18 and created two sql scripts namely database-acount.sql and database-data.sql.
+To enhance our platforms functionalities we focused on designing and implementing the database, in Sprint 2. Our aim was to depict the elements within our system leading us to establish a relational database structure with dedicated tables for users, posts and comments.
+We set up a "posts" database to store details about user postings, such as timestamps, user IDs and text content. This setup enables each post to be associated with its author allowing users to create posts that are visible on the site for others to read and engage with.
+Additionally we introduced a "comments" table for each post to capture feedback and encourage user participation. This feature enables individuals to share their thoughts and opinions by providing fields, for comment content, timestamps and user IDs. This eventullay went on with deleting posts and commenting on other id with posts requests.We have set up the CRUD (Create, Read, Update, Delete) operations, for every table to complete the database setup. This enables users to perform actions such, as creating posts reading existing content revising their articles and deleting outdated material.
 
-Database-accoutn.sql file is responsible for Database and user creation in MYSQL. Database-data.sql file is used to create tables like Users, Messages with its entities and relationships. We also created two relationships between users and messages they are Sends and receives.
 
 Entity diagram :
 
 ![Database entity diagram](images/dbentity.png)
-
+```
 Source code : database-account.sql
 
 ```
@@ -122,77 +121,84 @@ GRANT ALL ON receives TO 'waph_team16'@'localhost';
 
 ## User Interface
 
-Each member of the team successfully configured the setup in their local machine and tested it successfully. Also provided the testing screenshots below
+In the user interface it mainly concentrates on the logged in users Creating and setting up a database (may be unfinished and subject, to changes)
+Users who are logged in have the ability to create a post and leave comments, on any existing Logged in users are allowed to modify (edit, delete) their own posts.
 
-![SSL certificate created for the team project](images/sslcert.png)
-
-![Maheedhar HTTPS configuration test](images/atmakumatest.png)
-
-![Sohan Bodapati HTTPS configuration test](images/sohantest.png)
-
-![Bhanu Suraj HTTPS configuration test](images/sohantest.png)
+![Basic UI of home page updated](1.png)
 
 # Security analysis
 
-As part of our previous Lab's like lab-3 and lab-4 , We implemented many security measures to make our Web application more secure and robust.
-
-I created an SSL certificate, set up HTTPS on my web server, and used HTTPS to see a PHP website. The SSL certificate details are displayed in the screenshots, enabling secure connection between the client and the server. By encrypting the data transferred between the user's browser and the web server, this ensures data protection. When HTTPS is successfully configured, the web application's security will be good.
-
-By setting the HttpOnly and Secure settings for session cookies, I was able to protect sessions from session-hijacking attacks as in the screenshots. These flags were added to the PHP code to make sure that the session cookie can only be read via HTTP and is transferred safely over HTTPSonly. The browser's developer tools confirm that the HttpOnly and Secure flags are correctly set, improving web application security and decreasing the chance of session hijacking
+We carried out a thorough security analysis in Sprint 2 in order to find potential weaknesses and put effective risk-reduction in place. We concentratedd on guaranteeing the platform-wide availability confidentiality and integrity of the front-data with the back-end data. This required putting encryption methods in place to safeguard private user data kept in the database, like passwords. To stop unwanted access to user accounts, we also implemented authentication procedures. Additionally, in order to reduce the danger of SQL injection and cross-site scripting (XSS) attacks, we included input validation and sanitization. In order to prevent session hijacking, we also used secure session management techniques. We also put in place appropriate access control mechanisms to guarantee that users may only view and edit their own data. Frequent penetration tests and security checks were carried out to find and fix any possible issues
 
 # Demo (screenshots)
 
-In this Sprint-0 we successfully tested the login page of our mini facebook application 
+In this Sprint-2 we successfully designed the database and connected it with the front end with all the security ascpects
 
-![User Login Page](images/loginform.png)
+![User Login Page Updated](2.png)
 
-![Admin User Sucessfull login](images/loginsuccess.png)
+![Sucessful log in ](3.png)
+### Database design
+The design is well aligned with tables.
 
-![Invalid user Login Failed](images/invaliduserattempt.png)
+![Database design ](4.png)
+
+### Creation of posts
+The users with autheticated log in can create posts and view other posts and can also comment on the posts.
+
+![Creation of posts ](5.png)
+
+![Comment section of posts ](6.png)
+
+![The database stores the posts and authenticates it ](7.png)
+
+### Posts can be updated or deleted
+In this section, we have implemented the task of editing the existing posts and they can also be deleted. Other posts can not be deleted or updated.
+
+![Updating the posts ](8.png)
+
+![Deleting the posts ](9.png)
+
+![Other posts can not be edited or deleted ](10.png)
 
 # Software Process Management
 
-1. Agile software development approach, primarily utilizing the Scrum framework for project management.
-2. Sprint 0 focused on collaboration and task division among team members.
-3. Member-1 created repositories in GitHub to ensure structured version control and collaboration.
-4. Member-2 generated SSL keys and updated the repository, prioritizing security measures.
-5. Member-3 contributed by writing SQL scripts for database design and uploading them to the GitHub repository.
-6. Individual setup tasks included configuring local machines with HTTPS and integrating SSL keys for secure communication.
+1. Sprint 2 mainly focused on database management with the front end.
+2. Member-1 created the database configurations.
+3. Member-2 The fronted CSS and connected it with the backend.
+4. Member-3 The authentication and security factors were handled.
 
-Result: Establishment of essential project foundations and streamlined development processes for subsequent sprints.
+
+Result: We were on the mark with the result.
 
 ## Scrum process
 
-### Sprint 0
+### Sprint 2
 
-Duration: 03/20/2024-03/24/2024
+Duration: 04/1/2024-04/18/2024
 
 #### Completed Tasks: 
 
-1. Github Repositories Setup
-2. SSL key generation and HTTPS Setup
-3. Team database Setup and Script management
-4. Login System Code migration and testing
+1. Github Setup
+2. Database Setup
+3. Login authentication system with addition and deletion of posts
 
 #### Contributions: 
 
-1. Member 1, x commits, y hours, contributed in xxx
-2. Member 2, x commits, y hours, contributed in xxx
-3. Member 3, x commits, y hours, contributed in xxx
+1. Member 1, 5 commits, 7 hours, contributed in database setup
+2. Member 2, 7 commits, 8 hours, contributed in connection of post requests to front end
+3. Member 3, 5 commits, 6 hours, contributed in security setup
 
 #### Sprint Retrospection:
 
 _(Introduction to Sprint Retrospection:
 
-_Working through the sprints is a continuous improvement process. Discussing the completed sprint can improve the next sprint walk through a much more efficient one. Sprint retrospection is done once a sprint is finished and the team is ready to start another sprint planning meeting. This discussion can take up to 1 hour depending on the ideal team size of 4 members. 
-Discussing good things that happened during the sprint can improve the team's morale, good team collaboration, appreciating someone who did a fantastic job solving a blocker issue, work well-organized, and helping someone in need. This will improve the team's confidence and keep them motivated.
-As a team, we can discuss what has gone wrong during the sprint and come up with improvement points for the next sprints. Few points can be like, need to manage time well, need to prioritize the tasks properly and finish a task in time, incorrect design lead to multiple reviews and that wasted time during the sprint, team meetings were too long which consumed most of the effective work hours. We can mention every problem is in the sprint which is hindering the progress.
-Finally, this meeting should improve your next sprint drastically and understand the team dynamics well. Mention the bullet points and discuss how to solve it.)_
+In Sprint 2 we assess our development and  areas that needed work. We celebrated the successful completion of the design and implementation of the database in addition to the addition of features for user engagement like the ability to add comments and articles. To improve security we did, however realise that permission and authentication systems still needed to be improved. We also found that optimissing database queries is crucial for increased scalability and performance. As we move forward, we want to give these areas top priority while staying committed to providing users with value through iterative development and continual improvement.
+
 
 | Good     |   Could have been better    |  How to improve?  |
 |----------|:---------------------------:|------------------:|
-|          |                             |                   |
+|Edit posts|with double factor authentication|         null  |
 
 # Appendix
 
-Include the content (in text, not as images) of the SQL files and all source code of your PHP files (with the file name). 
+The database file is already attached
