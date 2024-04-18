@@ -6,29 +6,32 @@ $secure = TRUE;
 $httponly = TRUE;
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 session_start();
-if (isset($_POST["username"]) and isset($_POST["password"])) {
-		if (checklogin_mysql($_POST["username"],$_POST["password"])) {
-			$_SESSION['authenticated'] = TRUE;
-			$_SESSION['username'] = $_POST["username"];
-			$_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];	
-		}else{
-			session_destroy();
-			echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
-			die();
-		}
-	}
-	if (!isset($_SESSION['authenticated']) or $_SESSION['authenticated']!= TRUE) {
-		session_destroy();
-		echo "<script>alert('You have not login. Please login first!');</script>";
-		header("Refresh: 0; url=form2.php");
-		die();
-	}
-        if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
-		session_destroy();
-		echo "<script>alert('Session hijacking attack is detected!');</script>";
-		header("Refresh:0; url=form2.php");
-		die();
-	}
+
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    if (checklogin_mysql($_POST["username"], $_POST["password"])) {
+        $_SESSION['authenticated'] = TRUE;
+        $_SESSION['username'] = $_POST["username"];
+        $_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];
+    } else {
+        session_destroy();
+        echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
+        die();
+    }
+}
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
+    session_destroy();
+    echo "<script>alert('You have not logged in. Please log in first!');</script>";
+    header("Refresh: 0; url=form2.php");
+    die();
+}
+
+if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
+    session_destroy();
+    echo "<script>alert('Session hijacking attack detected!');</script>";
+    header("Refresh: 0; url=form2.php");
+    die();
+}
 
 function checklogin_mysql($username, $password)
 {
@@ -64,14 +67,20 @@ function getPosts()
             echo "<div class='post'>";
             // echo "<h3>" . $row['post_id'] . "</h3>";
             echo "<p>" . $row['content'] . "</p>";
-            echo "<p>Posted by : " . $row['name'] . "</p>";
+            echo "<p>Posted by: " . $row['name'] . "</p>";
             echo "<p>Time: " . $row['timestamp'] . "</p>";
+            echo "<form method='post' action='add_comment.php'>";
+            echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
+            echo "<input type='text' name='comment_content' placeholder='Add a comment'>";
+            echo "<input type='submit' value='Comment'>";
+            echo "</form>";
             echo "</div>";
         }
     } else {
         echo "<p>No posts found.</p>";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -88,17 +97,21 @@ function getPosts()
             margin-right: 10px;
             transition: color 0.3s; /* Smooth color transition */
         }
+
         .user-info a:hover {
             color: #0056b3; /* Darker blue on hover */
         }
+
         .main-content h3 {
             color: #007bff; /* Blue heading color */
         }
+
         .post {
             border-bottom: 1px solid #ccc;
             padding-bottom: 10px;
             margin-bottom: 10px;
         }
+
         .post:hover {
             background-color: #f9f9f9; /* Light gray background on hover */
         }
@@ -119,8 +132,12 @@ function getPosts()
     <section class="main-content">
         <h3>Posts:</h3>
         <?php getPosts(); ?>
+        <h3>Add New Post:</h3>
+        <form method="post" action="add_post.php">
+            <textarea name="post_content" rows="4" cols="50" placeholder="Write something..."></textarea><br>
+            <input type="submit" value="Post">
+        </form>
     </section>
 </div>
 </body>
 </html>
-
