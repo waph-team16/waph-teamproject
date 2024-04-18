@@ -78,7 +78,7 @@ function getPosts()
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Individual Project 2</title>
+    <title>MiniFacebook</title>
     <link rel="stylesheet" href="minifbstyle.css">
     <style>
         /* Interactive styles */
@@ -107,7 +107,7 @@ function getPosts()
 <body>
 <div class="container">
     <header>
-        <h1>Individual Project 2</h1>
+        <h1>MiniFacebook</h1>
         <div class="user-info">
             <h2>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</h2>
             <a href="logout.php">Logout</a>
