@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user_id = getUserId($_SESSION['username'], $mysqli);
 
-        $sql = "UPDATE posts SET content = ? WHERE user_id = ? AND timestamp = NOW();";
+        $sql = "UPDATE posts SET content = ? WHERE post_id = ? AND timestamp = NOW()";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("si", $updated_content, $user_id,);
         if ($stmt->execute()) {
