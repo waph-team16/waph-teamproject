@@ -63,4 +63,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request method.";
 }
+
+// Display comments for the given post_id
+if (isset($_GET['post_id'])) {
+    $post_id = $_GET['post_id'];
+
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+
+    $sql = "SELECT c.content, u.username 
+            FROM comments c 
+            INNER JOIN users u ON c.user_id = u.user_id 
+            WHERE c.post_id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    echo "<h2>Comments</h2>";
+    while ($row = $result->fetch_assoc()) {
+        $content = $row['content'];
+        $username = $row['username'];
+        echo "<p><strong>$username:</strong> $content</p>";
+    }
+
+    $stmt->close();
+    $mysqli->close();
+}
 ?>
