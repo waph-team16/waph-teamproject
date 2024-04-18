@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<input type='submit' value='Update'>";
             echo "</form>";
         } else {
-            echo "Post not found.";
+            echo "Post can not be edited.";
             echo '<a href="index.php"> Home page </a>';
         }
     } else {
