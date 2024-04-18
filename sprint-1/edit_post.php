@@ -21,12 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "</form>";
         } else {
             echo "Post not found.";
+            echo '<a href="index.php"> Home page </a>';
         }
     } else {
         echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
     }
 } else {
     echo "Invalid request method.";
+    echo '<a href="index.php"> Home page </a>';
 }
 
 function getPostContent($post_id)
