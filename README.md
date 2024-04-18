@@ -124,7 +124,7 @@ GRANT ALL ON receives TO 'waph_team16'@'localhost';
 In the user interface it mainly concentrates on the logged in users Creating and setting up a database (may be unfinished and subject, to changes)
 Users who are logged in have the ability to create a post and leave comments, on any existing Logged in users are allowed to modify (edit, delete) their own posts.
 
-![Basic UI of home page updated](1.png)
+![Basic UI of login page updated](1.png)
 
 # Security analysis
 
@@ -134,9 +134,8 @@ We carried out a thorough security analysis in Sprint 2 in order to find potenti
 
 In this Sprint-2 we successfully designed the database and connected it with the front end with all the security ascpects
 
-![User Login Page Updated](2.png)
-
 ![Sucessful log in ](3.png)
+
 ### Database design
 The design is well aligned with tables.
 
@@ -156,9 +155,15 @@ In this section, we have implemented the task of editing the existing posts and 
 
 ![Updating the posts ](8.png)
 
+![Updating the posts sucessfully](a.png)
+
 ![Deleting the posts ](9.png)
 
-![Other posts can not be edited or deleted ](10.png)
+![Deleting the posts sucess ](b.png)
+
+![Other posts can not be edited ](10.png)
+
+![Other posts can not deleted ](c.png)
 
 # Software Process Management
 
