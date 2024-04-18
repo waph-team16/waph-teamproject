@@ -87,16 +87,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("iis", $post_id, $user_id, $comment_content);
             if ($stmt->execute()) {
                 echo "Comment added successfully.";
+                echo '<a href="index.php"> Home page </a>';
             } else {
                 echo "Error adding comment: " . $mysqli->error;
+                echo '<a href="index.php"> Home page </a>';
             }
 
             $stmt->close();
         } else {
             echo "Error adding comment: Post does not exist.";
+            echo '<a href="index.php"> Home page </a>';
         }
     } else {
         echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
     }
 }
 
