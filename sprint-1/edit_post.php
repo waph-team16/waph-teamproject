@@ -1,54 +1,54 @@
 <?php
 session_start();
 
-// Check if user is logged in
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
     echo "You are not logged in.";
     exit;
 }
 
-// Check if post_id is set
-if (!isset($_GET['post_id'])) {
-    echo "Invalid request.";
-    exit;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['post_id'])) {
+        $post_id = $_POST['post_id'];
+
+        // Assuming you have a function to retrieve post content based on post ID
+        $post_content = getPostContent($post_id);
+
+        if ($post_content !== false) {
+            echo "<form method='post' action='update_post.php'>";
+            echo "<input type='hidden' name='post_id' value='" . $post_id . "'>";
+            echo "<textarea name='updated_content' rows='4' cols='50'>" . $post_content . "</textarea><br>";
+            echo "<input type='submit' value='Update'>";
+            echo "</form>";
+        } else {
+            echo "Post not found.";
+        }
+    } else {
+        echo "Invalid request.";
+    }
+} else {
+    echo "Invalid request method.";
 }
 
-// Check if the user is the owner of the post
-$post_id = $_GET['post_id'];
+function getPostContent($post_id)
+{
+    // Assuming you have already established a database connection
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
 
-$mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
-if ($mysqli->connect_errno) {
-    printf("Database connection failed: %s\n", $mysqli->connect_error);
-    exit();
+    $sql = "SELECT content FROM posts WHERE post_id=?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        return $row['content'];
+    } else {
+        return false;
+    }
 }
-
-$sql = "SELECT user_id FROM posts WHERE post_id=?";
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param("i", $post_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
-if (!$row || $row['user_id'] !== $_SESSION['user_id']) {
-    echo "You are not authorized to edit this post.";
-    exit;
-}
-
-// If the user is authorized, display the edit form
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Post</title>
-</head>
-<body>
-    <h2>Edit Post</h2>
-    <form action="update_post.php" method="post">
-        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-        <textarea name="post_content" rows="4" cols="50"><?php echo htmlentities($post_content); ?></textarea><br>
-        <input type="submit" value="Save">
-    </form>
-</body>
-</html>
