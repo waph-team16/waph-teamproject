@@ -48,7 +48,7 @@ A detailed security strategy is implemented in the small scale Facebook project 
 
 1. Database implementation in a clear way to designate the valid users
 2. The logged-in users will be able to manage their posts and manage them.
-3.Users can manage their posts by deleting their content without the ability to remove posts made by others.
+3. Users can manage their posts by deleting their content without the ability to remove posts made by others.
 
 
 ## Use-Case Realization
@@ -284,6 +284,10 @@ The users with autheticated log in can create posts and view other posts and can
 ![Creation of posts ](5.png)
 
 ![Comment section of posts ](6.png)
+
+![After the Comment is posted ](11.png)
+
+![After the Comment is posted it reflects on database ](12.png)
 
 ![The database stores the posts and authenticates it ](7.png)
 
