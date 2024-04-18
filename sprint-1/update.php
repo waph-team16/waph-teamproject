@@ -14,14 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Assuming you have a function to update a post based on post ID
         if (updatePost($post_id, $updated_content)) {
             echo "Post updated successfully.";
+            echo '<a href="index.php"> Home page </a>';
         } else {
             echo "Failed to update post.";
+            echo '<a href="index.php"> Home page </a>';
         }
     } else {
         echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
     }
 } else {
     echo "Invalid request method.";
+    echo '<a href="index.php"> Home page </a>';
 }
 
 function updatePost($post_id, $updated_content)
