@@ -7,7 +7,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['post_content'])) {
+    if (isset($_POST['updated_content'])) {
         $post_content = $_POST['updated_content'];
 
         $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
