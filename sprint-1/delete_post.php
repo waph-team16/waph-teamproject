@@ -13,14 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Assuming you have a function to delete a post based on post ID
         if (deletePost($post_id)) {
             echo "Post deleted successfully.";
+            echo '<a href="index.php"> Home page </a>';
         } else {
             echo "Failed to delete post.";
+            echo '<a href="index.php"> Home page </a>';
         }
     } else {
         echo "Invalid request.";
+        echo '<a href="index.php"> Home page </a>';
     }
 } else {
     echo "Invalid request method.";
+    echo '<a href="index.php"> Home page </a>';
 }
 
 function deletePost($post_id)
