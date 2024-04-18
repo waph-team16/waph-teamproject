@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $post_content = getPostContent($post_id);
 
         if ($post_content !== false) {
-            echo "<form method='post' action='update_post.php'>";
+            echo "<form method='post' action='index.php'>";
             echo "<input type='hidden' name='post_id' value='" . $post_id . "'>";
             echo "<textarea name='updated_content' rows='4' cols='50'>" . $post_content . "</textarea><br>";
             echo "<input type='submit' value='Update'>";
