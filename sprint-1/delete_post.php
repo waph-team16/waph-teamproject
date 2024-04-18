@@ -32,10 +32,17 @@ function deletePost($post_id)
         exit();
     }
 
-    $sql = "DELETE FROM posts WHERE post_id=?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $post_id);
-    if ($stmt->execute()) {
+    // Delete comments associated with the post
+    $sql_delete_comments = "DELETE FROM comments WHERE post_id=?";
+    $stmt_delete_comments = $mysqli->prepare($sql_delete_comments);
+    $stmt_delete_comments->bind_param("i", $post_id);
+    $stmt_delete_comments->execute();
+
+    // Delete the post
+    $sql_delete_post = "DELETE FROM posts WHERE post_id=?";
+    $stmt_delete_post = $mysqli->prepare($sql_delete_post);
+    $stmt_delete_post->bind_param("i", $post_id);
+    if ($stmt_delete_post->execute()) {
         return true;
     } else {
         return false;
