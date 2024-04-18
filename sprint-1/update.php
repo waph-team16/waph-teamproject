@@ -7,28 +7,16 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['updated_content'])) {
-        $post_content = $_POST['updated_content'];
+    if (isset($_POST['post_id']) && isset($_POST['updated_content'])) {
+        $post_id = $_POST['post_id'];
+        $updated_content = $_POST['updated_content'];
 
-        $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
-        if ($mysqli->connect_errno) {
-            printf("Database connection failed: %s\n", $mysqli->connect_error);
-            exit();
-        }
-
-        $user_id = getUserId($_SESSION['username'], $mysqli);
-
-        $sql = "UPDATE posts SET content = ? WHERE post_id = ?";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("si", $updated_content, $post_id,);
-        if ($stmt->execute()) {
-            echo "Post added successfully.";
+        // Assuming you have a function to update a post based on post ID
+        if (updatePost($post_id, $updated_content)) {
+            echo "Post updated successfully.";
         } else {
-            echo "Error adding post: " . $mysqli->error;
+            echo "Failed to update post.";
         }
-
-        $stmt->close();
-        $mysqli->close();
     } else {
         echo "Invalid request.";
     }
@@ -36,14 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method.";
 }
 
-function getUserId($username, $mysqli)
+function updatePost($post_id, $updated_content)
 {
-    $sql = "SELECT user_id FROM users WHERE username=?";
+    // Assuming you have already established a database connection
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+
+    $sql = "UPDATE posts SET content=? WHERE post_id=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    return $row['user_id'];
+    $stmt->bind_param("si", $updated_content, $post_id);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 ?>
