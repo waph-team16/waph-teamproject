@@ -1,4 +1,5 @@
 <?php
+// Start session
 $lifetime = 15 * 60;
 $path = "/";
 $domain = "192.167.9.255";
@@ -7,18 +8,7 @@ $httponly = TRUE;
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
 session_start();
 
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-    if (checklogin_mysql($_POST["username"], $_POST["password"])) {
-        $_SESSION['authenticated'] = TRUE;
-        $_SESSION['username'] = $_POST["username"];
-        $_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];
-    } else {
-        session_destroy();
-        echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
-        die();
-    }
-}
-
+// Check if the user is logged in
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
     session_destroy();
     echo "<script>alert('You have not logged in. Please log in first!');</script>";
@@ -26,6 +16,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
     die();
 }
 
+// Check for session hijacking
 if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     session_destroy();
     echo "<script>alert('Session hijacking attack detected!');</script>";
@@ -33,6 +24,7 @@ if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     die();
 }
 
+// Function to check login credentials
 function checklogin_mysql($username, $password)
 {
     $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
@@ -50,6 +42,7 @@ function checklogin_mysql($username, $password)
     return FALSE;
 }
 
+// Function to get posts
 function getPosts()
 {
     $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
@@ -65,10 +58,16 @@ function getPosts()
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "<div class='post'>";
-            // echo "<h3>" . $row['post_id'] . "</h3>";
             echo "<p>" . $row['content'] . "</p>";
             echo "<p>Posted by: " . $row['name'] . "</p>";
             echo "<p>Time: " . $row['timestamp'] . "</p>";
+            
+            // Check if the post is owned by the current user
+            if ($_SESSION['username'] == $row['name']) {
+                echo "<a href='edit_post.php?post_id=" . $row['post_id'] . "'>Edit</a>";
+                echo "<a href='delete_post.php?post_id=" . $row['post_id'] . "'>Delete</a>";
+            }
+            
             echo "<form method='post' action='add_comment.php'>";
             echo "<input type='hidden' name='post_id' value='" . $row['post_id'] . "'>";
             echo "<input type='text' name='comment_content' placeholder='Add a comment'>";
