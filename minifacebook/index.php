@@ -24,16 +24,15 @@
         header("Refresh: 0; url=register.php");
         die();
     }
-
- if(isset($_SESSION['last_visit'])) {
+    if(isset($_SESSION['last_visit'])) {
         $lastVisit = $_SESSION['last_visit'];
         echo "Last visit: $lastVisit"; // Echo last visit time
-    } else {
-        $lastVisit = "This is your first visit!";
     }
 
     // Update last visit time
     $_SESSION['last_visit'] = date("Y-m-d H:i:s");
+
+
 
     if(isset($_POST['post'])){
         $uploadOk = 1;
