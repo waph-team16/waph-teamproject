@@ -21,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         $_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];
     } else {
         session_destroy();
-        echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
+        echo "<script>alert('Invalid username/password');window.location='register.php';</script>";
         die();
     }
 }
@@ -29,14 +29,14 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
     session_destroy();
     echo "<script>alert('You have not logged in. Please log in first!');</script>";
-    header("Refresh: 0; url=form2.php");
+    header("Refresh: 0; url=register.php");
     die();
 }
 
 if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     session_destroy();
     echo "<script>alert('Session hijacking attack detected!');</script>";
-    header("Refresh: 0; url=form2.php");
+    header("Refresh: 0; url=register.php");
     die();
 }
 
