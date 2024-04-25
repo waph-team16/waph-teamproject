@@ -34,7 +34,8 @@
         // Session hijacked, destroy session
         session_destroy();
         // Perform further actions like redirecting to login page
-        header("Location: login.php");
+        echo "<script>alert('Session hijacking attack detected!');</script>";
+        header("Location: register.php");
         exit;
     }
 
