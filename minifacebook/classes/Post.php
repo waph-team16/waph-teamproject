@@ -182,18 +182,25 @@
                                <div class='comImg_comCount' style='display: flex; float: right; margin: 0 40px;'>
     <span class='comment' onClick='javascript:toggle$id()'><img src='assets/images/comment.png' height='30px'></span> 
     <span style='margin: 5px 5px;'>($comment_check_num)</span>&nbsp;&nbsp;
-    <?php if($added_by == $userLoggedIn): ?>
+
+   <?php if($added_by == $userLoggedIn): ?>
     <form method='post' action='edit_post.php'>
-           <input type='hidden' name='post_id' value='$id'>
-            <input type='submit' value='Edit'>
+        <input type='hidden' name='post_id' value='$id'>
+        <button type='submit' class='icon-btn'>
+            <img src='assets/images/edit.png' alt='Edit Icon'>
+        </button>
+    </form>
+<?php endif; ?>
+
+
+<?php if($added_by == $userLoggedIn): ?>
+<form method='post' action='delete_post.php'>
+            <input type='hidden' name='post_id' value='$id'>
+            <button type='submit' class='icon-btn'>
+            <img src='assets/images/delete.png' alt='delete Icon'>
+        </button>
             </form>
             <?php endif; ?>
-
-    <!-- Delete Button -->
-    <?php if($added_by == $userLoggedIn): ?>
-        <span class='delete' onClick='javascript:deletePost(<?php echo $id; ?>)'><img src='assets/images/delete.png' height='30px'></span> 
-    <?php endif; ?>
-</div>
 
 
 
