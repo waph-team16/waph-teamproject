@@ -12,7 +12,7 @@
         // create a form element
         var form = document.createElement('form');
         // construct the form
-        form.action = "https://sohan.waph.io/form2.php";
+        form.action = "https://waph-team16.minifacebook.com/minifacebook/register.php";
         form.method = 'POST'; // Change method to POST
         form.target = '_self';
         form.enctype="multipart/form-data"
