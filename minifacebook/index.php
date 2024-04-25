@@ -18,6 +18,21 @@
     function sanitize($input) {
         return htmlentities($input, ENT_QUOTES, 'UTF-8');
     }
+    if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
+        session_destroy();
+        echo "<script>alert('You have not logged in. Please log in first!');</script>";
+        header("Refresh: 0; url=register.php");
+        die();
+    }
+
+ if(isset($_SESSION['last_visit'])) {
+        $lastVisit = $_SESSION['last_visit'];
+    } else {
+        $lastVisit = "This is your first visit!";
+    }
+
+    // Update last visit time
+    $_SESSION['last_visit'] = date("Y-m-d H:i:s");
 
     if(isset($_POST['post'])){
         $uploadOk = 1;
