@@ -100,7 +100,6 @@
         <div class="info-inner">
             <div class="info-in-head">
                 <a href="<?php echo $userLoggedIn; ?>"><img src="<?php echo $user['cover_pic']; ?>"></a>
-
             </div>
             <div class="info-in-body">
                 <div class="in-b-box">
