@@ -18,12 +18,7 @@
     function sanitize($input) {
         return htmlentities($input, ENT_QUOTES, 'UTF-8');
     }
-    if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
-        session_destroy();
-        echo "<script>alert('You have not logged in. Please log in first!');</script>";
-        header("Refresh: 0; url=register.php");
-        die();
-    }
+
     if(isset($_SESSION['last_visit'])) {
         $lastVisit = $_SESSION['last_visit'];
         echo "Last visit: $lastVisit"; // Echo last visit time
