@@ -176,10 +176,13 @@
         </div></center><center>
         <div class="total">
             <div class="t_user">
-                <div class="t_user_wreper">
-                    <i class="fas fa-user fa-3x" style="margin-top: 15px; color: white; "></i><br>
-                    <span style="font-size: 22px; font-family: system-ui; color: white; ">Total Users</span> <br> <span style="font-size: 25px; color: white; "> <?php echo $count_user; ?> </span>
-                </div>
+                <form action="show_users.php" method="get">
+    <button type="submit" class="t_user_wreper" style="border: none; background: none; cursor: pointer;">
+        <i class="fas fa-user fa-3x" style="margin-top: 15px; color: white;"></i><br>
+        <span style="font-size: 22px; font-family: system-ui; color: white;">Total Users</span> <br>
+        <span style="font-size: 25px; color: white;"><?php echo $count_user; ?></span>
+    </button>
+</form>
             </div>
             <div class="t_post">
                 <div class="t_post_wreper">

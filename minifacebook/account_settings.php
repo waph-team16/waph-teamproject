@@ -104,6 +104,30 @@
         // header("Location: account_settings.php");
     }
 
+    if(isset($_POST['submit_email'])){
+        $Lname = $_POST['addemail'];
+        $Lname = strip_tags($Lname); //remove thigs like <,>...etc tages
+        $Lname = mysqli_real_escape_string($con, $Lname); //egnore the ' in post boddy
+        $query = mysqli_query($con, "update users set additional_email='$Lname' where username='$userLoggedIn'") or die("cannot update".mysqli_error($con));
+        if($query)
+            array_push($error_array, "additional email Updated :)");       
+        else 
+            array_push($error_array, "Fail to Updated additional email :(");
+        // header("Location: account_settings.php");
+    }
+
+    if(isset($_POST['submit_phonenum'])){
+        $Lname = $_POST['phone'];
+        $Lname = strip_tags($Lname); //remove thigs like <,>...etc tages
+        $Lname = mysqli_real_escape_string($con, $Lname); //egnore the ' in post boddy
+        $query = mysqli_query($con, "update users set phone='$Lname' where username='$userLoggedIn'") or die("cannot update".mysqli_error($con));
+        if($query)
+            array_push($error_array, "phone number Updated :)");       
+        else 
+            array_push($error_array, "Fail to Updated phone number :(");
+        // header("Location: account_settings.php");
+    }
+
     if(isset($_POST['submit_date'])){
         $DOB = $_POST['DOB'];
         $DOB = strip_tags($DOB); //remove thigs like <,>...etc tages
@@ -217,7 +241,7 @@
                     </tr>
                     <tr><td><hr style="width: 240%;"></td></tr>
                     <tr class="r4">
-                        <td> <span> Edit Your Friest Name :  </span> </td>
+                        <td> <span> Edit Your First Name :  </span> </td>
                         <td> <input type="text" name="Fname" id="Fname"> <input type="submit" name="submit_Fname" value="Edit"> <input type="submit" style="background: darkorange;" value="Cancel">  <?php if (in_array("Fail to update First name" , $error_array)) echo "<br>Fail to update First name"; elseif (in_array("First name Updated :)" , $error_array)) { echo "<br>First name update :)"; } 
                     ?> </td>
                     </tr>
@@ -225,6 +249,16 @@
                     <tr class="r5">
                         <td> <span> Edit Your Last Name :  </span> </td>
                         <td> <input type="text" name="Lname" id="Lname"> <input type="submit" name="submit_Lname" value="Edit"> <input type="submit" style="background: darkorange;" value="Cancel"> <?php if (in_array("Fail to update last Name" , $error_array)) echo "<br>Fail to update last Name"; elseif (in_array("Last name Updated :)" , $error_array)) { echo "<br>Last name Updated :)"; }  ?> </td>
+                    </tr>
+                    <tr><td><hr style="width: 240%;"></td></tr>
+                    <tr class="r6">
+                        <td> <span> Edit Your additional email :  </span> </td>
+                        <td> <input type="text" name="addemail" id="h_town"> <input type="submit" name="submit_htown" value="Edit"> <input type="submit" style="background: darkorange;" value="Cancel"> <?php if (in_array("Fail to update Hometown" , $error_array)) echo "<br>Fail to update Hometown"; elseif (in_array("Hometown Updated :)" , $error_array)) { echo "<br>Hometown Updated :)"; } ?> </td>
+                    </tr>
+                    <tr><td><hr style="width: 240%;"></td></tr>
+                    <tr class="r6">
+                        <td> <span> Edit Your Phone Number:  </span> </td>
+                        <td> <input type="text" name="phone" id="h_town"> <input type="submit" name="submit_htown" value="Edit"> <input type="submit" style="background: darkorange;" value="Cancel"> <?php if (in_array("Fail to update Hometown" , $error_array)) echo "<br>Fail to update Hometown"; elseif (in_array("Hometown Updated :)" , $error_array)) { echo "<br>Hometown Updated :)"; } ?> </td>
                     </tr>
                     <tr><td><hr style="width: 240%;"></td></tr>
                     <tr class="r6">

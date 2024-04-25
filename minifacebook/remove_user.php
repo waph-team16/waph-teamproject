@@ -28,7 +28,7 @@
         $query = mysqli_query($con, "update users set user_closed='yes' where username='$user'") or die("No User Found");
         $post_query = mysqli_query($con, "delete from posts where added_by='$user'")or die("can not Delete posts");
         if($query){
-            echo "User $user is Deleted with his/her all posts";
+            echo "User $user is Disabled with his/her all posts";
         }
     }
 ?>

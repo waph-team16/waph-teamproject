@@ -17,7 +17,7 @@ include 'handlers/login_handler.php';
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellcome to Ocean</title>
+    <title>Wellcome to WAPH-MiniFacebook</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/register.css">
@@ -49,9 +49,7 @@ include 'handlers/login_handler.php';
 <body>
    
     <div class="top-content">
-        <h1 style="font-size:35px;">Wellcome to Ocean, share your moments with friends!</h1>
-        <p>Sign up and start sharing your photos and updates with your friends.
-        </p>
+        <h1 style="font-size:35px;">Welcome to Minifacebook by team16</h1>
         <hr style="width: 50%; color: white; margin-bottom:25px; margin-top:25px;">
     </div>
 
@@ -202,7 +200,7 @@ include 'handlers/login_handler.php';
     <!-- Footer -->
     <footer>			
     	<div class="footer"> 
-            <a style="text-decoration-line: none; color: #977AFF;" href="admin.php"><i class="fas fa-user-shield"></i> Admin? click here <i class="fas fa-arrow-right"></i></a>
+            <a style="text-decoration-line: none; color: #977AFF;" href="admin.php"><i class="fas fa-user-shield"></i> Click here to login as SuperUser<i class="fas fa-arrow-right"></i></a>
     		<p> ©2020 All Rights Reserved <BR> Website designed and developed by <strong><U>Waph-Team16</u></strong></p>
     	</div>
     </footer>
