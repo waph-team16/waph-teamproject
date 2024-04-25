@@ -27,6 +27,7 @@
 
  if(isset($_SESSION['last_visit'])) {
         $lastVisit = $_SESSION['last_visit'];
+        echo "Last visit: $lastVisit"; // Echo last visit time
     } else {
         $lastVisit = "This is your first visit!";
     }
