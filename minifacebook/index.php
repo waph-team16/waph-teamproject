@@ -6,6 +6,57 @@
     // include 'classes/User.php';
     // include 'classes/Post.php';
     // include 'classes/Message.php';
+$lifetime = 15 * 60;
+$path = "/";
+$domain = "localhost";
+$secure = TRUE;
+$httponly = TRUE;
+session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
+session_start();
+
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    if (checklogin_mysql($_POST["username"], $_POST["password"])) {
+        $_SESSION['authenticated'] = TRUE;
+        $_SESSION['username'] = $_POST["username"];
+        $_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];
+    } else {
+        session_destroy();
+        echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
+        die();
+    }
+}
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
+    session_destroy();
+    echo "<script>alert('You have not logged in. Please log in first!');</script>";
+    header("Refresh: 0; url=form2.php");
+    die();
+}
+
+if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
+    session_destroy();
+    echo "<script>alert('Session hijacking attack detected!');</script>";
+    header("Refresh: 0; url=form2.php");
+    die();
+}
+
+function checklogin_mysql($username, $password)
+{
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+    $sql = "SELECT * FROM users WHERE username=? AND password = md5(?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows >= 1)
+        return TRUE;
+    return FALSE;
+}
+
 
     if(isset($_POST['post'])){
         $uploadOk = 1;
@@ -53,7 +104,8 @@
             <div class="info-in-body">
                 <div class="in-b-box">
                     <div class="in-b-img">
-                        <a href="<?php echo $userLoggedIn; ?>"><img src="<?php echo $user['profile_pic']; ?>"></a>
+                        <a href="<?php echo $userLoggedIn; ?>"><img src="<?php echo $user['profile_pic'] ; ?>"></a>
+                        <h2>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</h2>
                     </div>
                 </div>
                 <div class="info-body-name">
