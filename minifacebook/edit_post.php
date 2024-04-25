@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
-    echo "You are not logged in.";
-    exit;
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['post_id'])) {
         $post_id = $_POST['post_id'];
@@ -42,13 +37,20 @@ function getPostContent($post_id)
     }
 
     // Check if the logged-in user is the author of the post
-    $user_name = getUserName($_SESSION['username'], $mysqli);
+    $username = $_SESSION['username'];
 
     $sql = "SELECT body FROM posts WHERE id=? AND added_by=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ii", $post_id, $user_name);
+    $stmt->bind_param("is", $post_id, $username);
     $stmt->execute();
     $result = $stmt->get_result();
+
+    // Debugging statements using JavaScript console.log()
+    echo "<script>";
+    echo "console.log('SQL: " . $sql . "');";
+    echo "console.log('Post ID: " . $post_id . "');";
+    echo "console.log('Username: " . $username . "');";
+    echo "</script>";
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
@@ -57,6 +59,8 @@ function getPostContent($post_id)
         return false;
     }
 }
+
+
 
 function getUserName($username, $mysqli)
 {

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Post deleted successfully.";
             echo '<a href="index.php"> Home page </a>';
         } else {
-            echo "Failed to delete post.";
+            echo "You are not allwed to delete this post.";
             echo '<a href="index.php"> Home page </a>';
         }
     } else {
@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function deletePost($post_id)
 {
-    // // Check if the logged-in user is the author of the post
-    // if (!isPostAuthor($post_id)) {
-    //     return false; // Unauthorized access
-    // }
+    // Check if the logged-in user is the author of the post
+    if (!isPostAuthor($post_id)) {
+        return false; // Unauthorized access
+    }
 
     // Assuming you have already established a database connection
     $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
@@ -60,6 +60,9 @@ function deletePost($post_id)
 
 function isPostAuthor($post_id)
 {
+    // Check if the logged-in user is the author of the post
+    $username = $_SESSION['username'];
+
     // Assuming you have already established a database connection
     $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
     if ($mysqli->connect_errno) {
@@ -67,26 +70,23 @@ function isPostAuthor($post_id)
         exit();
     }
 
-    // Get the user ID of the logged-in user
-    $user_id = getUserId($_SESSION['username'], $mysqli);
-
-    // Check if the logged-in user is the author of the post
-    $sql = "SELECT added_b FROM posts WHERE post_id=? LIMIT 1";
+    $sql = "SELECT added_by FROM posts WHERE id=? LIMIT 1";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $post_id);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($author_id);
+        $stmt->bind_result($author);
         $stmt->fetch();
         $stmt->close();
 
-        return $author_id == $user_id;
+        return $author === $username;
     }
 
     return false; // Post not found
 }
+
 
 function getUserName($username, $mysqli)
 {

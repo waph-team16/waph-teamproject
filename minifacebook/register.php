@@ -5,7 +5,6 @@
 
 <?php
 include 'session-file.php';
-
 include 'handlers/register_handler.php';
 include 'handlers/login_handler.php';
 ?>
@@ -78,7 +77,10 @@ include 'handlers/login_handler.php';
                     <?php if(in_array("Email or Password was incorrect", $error_array_login)) echo "<p class='alert'>Email or Password was incorrect</p>"; ?>
                     <?php if(in_array("User disabled by admin", $error_array_login)) echo "<p class='alert'>User disabled by admin</p>"; ?>
                     <button type="submit" style="margin-bottom:20px" name="login_button">Sign in!</button>
-                </form>     
+                </form>   
+                <form action="admin.php" method="GET">
+        <button type="submit" style="margin-bottom:20px">Go to Admin Page</button>
+    </form>  
             </div>
         </div>
 
@@ -128,11 +130,25 @@ include 'handlers/login_handler.php';
                         echo $_SESSION['reg_email'];
                     } ?>" required>
 
-                    <!-- Confirm Email -->
+                     <!-- Confirm Email -->
                     <label>Confirm Email</label>
                     <input type="email" name="reg_email2" placeholder="Confirm Email" value="<?php if (isset($_SESSION['reg_email2'])) {
                         echo $_SESSION['reg_email2'];
                     } ?>" required>
+
+                    <!-- Additional Email -->
+                    <label>Additional Email</label>
+                    <input type="email" name="add_email" placeholder="Additional Email" value="<?php if (isset($_SESSION['add_email'])) {
+                        echo $_SESSION['add_email'];
+                    } ?>" required>
+
+                    <!-- phone -->
+                    <label>Phone</label>
+                    <input type="text" name="phone" placeholder="Phone Number" value="<?php if (isset($_SESSION['phone'])) {
+                        echo $_SESSION['phone'];
+                    } ?>" required>
+
+                   
                     <?php
                         if (in_array("Email already in use", $error_array)) echo "<p class='alert'>Email already in use</p>";
                         else if (in_array("Email is invalid format", $error_array)) echo "<p class='alert'>Email is invalid format</p>";

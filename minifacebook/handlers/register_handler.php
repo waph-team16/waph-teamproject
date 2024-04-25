@@ -10,6 +10,8 @@
     $password2 = "";
     $email = "";
     $email2 = "";
+    $add_email="";
+    $phone="";
     $date = "";
     $dob = "";
     $gender = "";
@@ -47,6 +49,19 @@
         // $email = ucfirst(strtolower($email));
         $_SESSION['reg_email'] = $email;
         
+
+        //Additional Email
+        $add_email = strip_tags($_POST['add_email']);
+        $add_email = str_replace(' ', '', $add_email);
+        // $email = ucfirst(strtolower($email));
+        $_SESSION['add_email'] = $add_email;
+
+        //Phone
+        $phone = strip_tags($_POST['phone']);
+        $phone = str_replace(' ', '', $phone);
+        // $email = ucfirst(strtolower($email));
+        $_SESSION['phone'] = $phone;
+
         //Email2
         $email2 = strip_tags($_POST['reg_email2']);
         $email2 = str_replace(' ', '', $email2);
@@ -152,7 +167,7 @@
             }
             
             
-            $query = "INSERT INTO users (first_name, last_name, username, email, dob, gender, password, signup_date, profile_pic, cover_pic, num_posts, num_likes, user_closed, friend_array, address, city, hometown, country, bio, phone, work) VALUES ('$fname', '$lname', '$username', '$email', '$dob', '$gender', '$hashed_pwd', '$date', '$profile_pic', '$cover_pic', '0', '0', 'no', ',', '$add', '$city', '$home_town', '$country', NULL, NULL, '$work')";
+            $query = "INSERT INTO users (first_name, last_name, username, email, dob, gender, password, signup_date, profile_pic, cover_pic, num_posts, num_likes, user_closed, friend_array, address, city, hometown, country, bio, phone, work, additional_email) VALUES ('$fname', '$lname', '$username', '$email', '$dob', '$gender', '$hashed_pwd', '$date', '$profile_pic', '$cover_pic', '0', '0', 'no', ',', '$add', '$city', '$home_town', '$country', NULL, '$phone', '$work', '$add_email')";
             if(mysqli_query($con, $query))
             {
                 $_SESSION['username'] = $username;

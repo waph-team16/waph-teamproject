@@ -35,37 +35,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function getPostContent($post_id)
 {
     // Assuming you have already established a database connection
-    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
     if ($mysqli->connect_errno) {
         printf("Database connection failed: %s\n", $mysqli->connect_error);
         exit();
     }
 
     // Check if the logged-in user is the author of the post
-    $user_id = getUserId($_SESSION['username'], $mysqli);
+    $username = $_SESSION['username'];
 
-    $sql = "SELECT content FROM posts WHERE post_id=? AND user_id=?";
+    $sql = "SELECT body FROM posts WHERE id=? AND added_by=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ii", $post_id, $user_id);
+    $stmt->bind_param("is", $post_id, $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Debugging statements using JavaScript console.log()
+    echo "<script>";
+    echo "console.log('SQL: " . $sql . "');";
+    echo "console.log('Post ID: " . $post_id . "');";
+    echo "console.log('Username: " . $username . "');";
+    echo "</script>";
+
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        return $row['content'];
+        return $row['body'];
     } else {
         return false;
     }
 }
 
-function getUserId($username, $mysqli)
+
+
+function getUserName($username, $mysqli)
 {
-    $sql = "SELECT user_id FROM users WHERE username=?";
+    $sql = "SELECT username FROM users WHERE username=?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    return $row['user_id'];
+    return $row['username'];
 }
 ?>
