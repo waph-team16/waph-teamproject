@@ -2,13 +2,9 @@
 <!-- Index.php^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
 <?php
-    include 'header.php';
-    // include 'classes/User.php';
-    // include 'classes/Post.php';
-    // include 'classes/Message.php';
-$lifetime = 15 * 60;
+    $lifetime = 15 * 60;
 $path = "/";
-$domain = "localhost";
+$domain = "192.167.9.255";
 $secure = TRUE;
 $httponly = TRUE;
 session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
@@ -21,7 +17,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         $_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];
     } else {
         session_destroy();
-        echo "<script>alert('Invalid username/password');window.location='register.php';</script>";
+        echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
         die();
     }
 }
@@ -29,20 +25,20 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== TRUE) {
     session_destroy();
     echo "<script>alert('You have not logged in. Please log in first!');</script>";
-    header("Refresh: 0; url=register.php");
+    header("Refresh: 0; url=form2.php");
     die();
 }
 
 if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
     session_destroy();
     echo "<script>alert('Session hijacking attack detected!');</script>";
-    header("Refresh: 0; url=register.php");
+    header("Refresh: 0; url=form2.php");
     die();
 }
 
 function checklogin_mysql($username, $password)
 {
-    $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
+    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
     if ($mysqli->connect_errno) {
         printf("Database connection failed: %s\n", $mysqli->connect_error);
         exit();
@@ -56,6 +52,34 @@ function checklogin_mysql($username, $password)
         return TRUE;
     return FALSE;
 }
+
+function getPosts()
+{
+    $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+    $sql = "SELECT posts.post_id, profiles.name, posts.content, posts.timestamp 
+            FROM posts 
+            INNER JOIN profiles ON posts.user_id = profiles.user_id
+            ORDER BY posts.timestamp DESC";
+    $result = $mysqli->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='post'>";
+            echo "<p>" . $row['content'] . "</p>";
+            echo "<p>Posted by: " . $row['name'] . "</p>";
+            echo "<p>Time: " . $row['timestamp'] . "</p>";
+            // Add forms for editing, deleting, and commenting as needed
+            echo "</div>";
+        }
+    } else {
+        echo "<p>No posts found.</p>";
+    }
+}
+
+include 'header.php';
 
 
     if(isset($_POST['post'])){
