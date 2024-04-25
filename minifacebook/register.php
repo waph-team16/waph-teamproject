@@ -16,7 +16,7 @@ include 'handlers/login_handler.php';
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellcome to WAPH-MiniFacebook</title>
+    <title>Welcome to WAPH-MiniFacebook</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/register.css">
@@ -48,7 +48,7 @@ include 'handlers/login_handler.php';
 <body>
    
     <div class="top-content">
-        <h1 style="font-size:35px;">Welcome to Minifacebook by team16</h1>
+        <h1 style="font-size:35px; color: maroon;">Welcome to Minifacebook by team16</h1>
         <hr style="width: 50%; color: white; margin-bottom:25px; margin-top:25px;">
     </div>
 
