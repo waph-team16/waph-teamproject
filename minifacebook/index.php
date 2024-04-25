@@ -42,7 +42,7 @@ if ($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]) {
 
 function checklogin_mysql($username, $password)
 {
-    $mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+    $mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
     if ($mysqli->connect_errno) {
         printf("Database connection failed: %s\n", $mysqli->connect_error);
         exit();
