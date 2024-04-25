@@ -2,10 +2,44 @@
 <!-- Index.php^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
 <?php
-    include 'header.php';
-    // include 'classes/User.php';
-    // include 'classes/Post.php';
-    // include 'classes/Message.php';
+        include 'header.php';
+
+    // Start session with secure settings
+    session_set_cookie_params([
+        'lifetime' => 3600, // Lifetime in seconds
+        'path' => '/',
+        'domain' => 'localhost', // Change to your domain
+        'secure' => true, // HTTPS only
+        'httponly' => true // HTTP only
+    ]);
+    session_start();
+
+    // Function to sanitize user inputs
+    function sanitize($input) {
+        return htmlentities($input, ENT_QUOTES, 'UTF-8');
+    }
+
+    if(isset($_POST['post'])){
+        $uploadOk = 1;
+        $imageName = sanitize($_FILES['fileToUpload']['name']);
+        $errorMessage = "";
+
+        // Rest of your code
+    }
+
+    // Rest of your code
+
+    // Validate session to prevent hijacking
+    if(isset($_SESSION['user_agent']) && $_SESSION['user_agent'] !== $_SERVER['HTTP_USER_AGENT']) {
+        // Session hijacked, destroy session
+        session_destroy();
+        // Perform further actions like redirecting to login page
+        header("Location: login.php");
+        exit;
+    }
+
+    // Update user agent in session
+    $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 
     if(isset($_POST['post'])){
         $uploadOk = 1;
