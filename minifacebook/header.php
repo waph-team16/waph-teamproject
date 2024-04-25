@@ -88,8 +88,17 @@
   <nav>
         
 
-        <a href="index.php"> <i class="fas fa-home fa-lg"></i></a>
-        <a href="messages.php"> <i class="fas fa-envelope fa-lg"></i></a>
+     <!-- Home Button -->
+<button type="button" onclick="window.location.href='index.php'" style="width: 100px; height: 50px; border: none; background-color: red; color: white; padding: 0;" title="Go to Home">
+    <i class="fas fa-home fa-lg" style="margin-top: 15px;"></i>Home</button>
+
+<!-- Messages Button -->
+<button type="button" onclick="window.location.href='messages.php'" style="width: 100px; height: 50px; border: none; background-color: red; color: white; padding: 0;" title="Go to Messages">
+    <i class="fas fa-envelope fa-lg" style="margin-top: 15px;"></i>Messages
+</button>
+
+
+
         <?php    
             $message_obj = new Message($con, $userLoggedIn);
             $num_msg = $message_obj->getUnreadNumber();
