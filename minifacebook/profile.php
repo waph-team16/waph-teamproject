@@ -8,7 +8,7 @@ if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
 
 $username = $_SESSION['username'];
 
-$mysqli = new mysqli('localhost', 'waph_team16', 'Pa$$w0rd', 'waph_team');
+$mysqli = new mysqli('localhost', 'waph_team16', 'password', 'waph_teamproject');
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: " . $mysqli->connect_error;
     exit();
