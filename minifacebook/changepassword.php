@@ -56,7 +56,7 @@
     //         return false;
     //     }
 
-    //     // Hash the new password before updating
+    //     // Hashings the new password before updating
     //     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
     //     $prepared_sql = "UPDATE users SET password = ? WHERE username = ?";
@@ -86,10 +86,10 @@
 
     $prepared_sql = "UPDATE users SET password = ? WHERE username = ?;";
     $stmt = $mysqli->prepare($prepared_sql);
-    // Binding parameters
+    // the Binding parameters
     $stmt->bind_param("ss", $hashed_password, $username);
     $stmt->execute();
-    // Checking if the execution was successful
+    //  to Checking if the execution was successful
     if ($mysqli->affected_rows == 1)
         return TRUE;
     return FALSE;
