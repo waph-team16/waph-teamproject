@@ -50,13 +50,13 @@
 
     .form {
 
-      max-width: 300px; /* Adjust form width as needed */
+      max-width: 300px; /* To Adjust form width as needed */
 
       margin: 0 auto;
 
       padding: 20px;
 
-      background: #fff; /* White background */
+      background: #fff; /* this is White background */
 
       border-radius: 5px;
 
@@ -72,7 +72,7 @@
 
       margin-bottom: 10px;
 
-      border: 1px solid #ccc; /* Light gray border */
+      border: 1px solid #ccc; /* Light gray colour border */
 
       border-radius: 5px;
 
