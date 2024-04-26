@@ -3,7 +3,6 @@
 
 <!-- Remove Post.php^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
-
 <?php
 
     include 'session-file.php';
@@ -65,4 +64,5 @@
         <input type="submit" name="search_Post_btn" value="Remove">
     </form>
 </body>
+
 </html>
